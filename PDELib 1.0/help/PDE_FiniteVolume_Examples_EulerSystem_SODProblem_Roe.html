@@ -1,0 +1,436 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Roe<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem</A>.Roe</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Euler equations solved with the Finite Volume Methods by using the Roe´s flux.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.Euler"
+>Euler</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.ICS.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.IC" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.IC"
+>IC</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.ICS.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCL" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCL"
+>BCL</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.ICS.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCR" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCR"
+>BCR</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Euler<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.Euler"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe</A>.Euler</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.EulerD.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.Euler">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Euler equations solved with Roe´s flux</font></h3>
+<p>
+Implements the Euler system of equations
+</p>
+<p>
+<img align=middle src="..\Images\euler.png">
+</p>
+
+<p>
+with Roe´s flux. The initial conditions are
+</p>
+
+<img align=middle src="..\Images\sw4.png">
+
+<p>
+The boundary conditions are
+</p>
+
+<img align=middle src="..\Images\sw6.png">
+
+<p>
+This system has eigenvalues
+</p>
+
+<img align=middle src="..\Images\eulerroe1.png">
+
+<p>
+and eigenvector matrix
+</p>
+
+<img align=middle src="..\Images\eulerroe2.png">
+
+<p>
+that are computed at each time step at each interface by the corresponding blocks.
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Euler
+  <A HREF="PDE_FiniteVolume_LDLR_Reconstruction.html#PDE.FiniteVolume.LDLR.Reconstruction.Rec"
+>LDLR.Reconstruction.Rec</A> rec;
+  <A HREF="PDE_FiniteVolume_LDLR_Reconstruction.html#PDE.FiniteVolume.LDLR.Reconstruction.Rec"
+>LDLR.Reconstruction.Rec</A> rec1;
+  <A HREF="PDE_FiniteVolume_LDLR_Reconstruction.html#PDE.FiniteVolume.LDLR.Reconstruction.Rec"
+>LDLR.Reconstruction.Rec</A> rec2;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_Averages.html#PDE.FiniteVolume.Fluxes.Roe.Averages.Vaverage"
+>PDE.FiniteVolume.Fluxes.Roe.Averages.Vaverage</A> vaverage;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_Averages.html#PDE.FiniteVolume.Fluxes.Roe.Averages.Aaverage"
+>PDE.FiniteVolume.Fluxes.Roe.Averages.Aaverage</A> aaverage;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_Averages.html#PDE.FiniteVolume.Fluxes.Roe.Averages.Haverage"
+>PDE.FiniteVolume.Fluxes.Roe.Averages.Haverage</A> haverage;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_Averages.html#PDE.FiniteVolume.Fluxes.Roe.Averages.Daverage"
+>PDE.FiniteVolume.Fluxes.Roe.Averages.Daverage</A> daverage;
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(m=3,
+    n=10,
+    deltat=0);
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_Lambda.html#PDE.FiniteVolume.Fluxes.Roe.Lambda.Lambdas"
+>PDE.FiniteVolume.Fluxes.Roe.Lambda.Lambdas</A> lambdas;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_Wave.html#PDE.FiniteVolume.Fluxes.Roe.Wave.Waves"
+>PDE.FiniteVolume.Fluxes.Roe.Wave.Waves</A> waves;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_WaveStrength.html#PDE.FiniteVolume.Fluxes.Roe.WaveStrength.a"
+>PDE.FiniteVolume.Fluxes.Roe.WaveStrength.a</A> a;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_DeltaU.html#PDE.FiniteVolume.Fluxes.Roe.DeltaU.Deltau"
+>PDE.FiniteVolume.Fluxes.Roe.DeltaU.Deltau</A> deltau;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_DeltaU.html#PDE.FiniteVolume.Fluxes.Roe.DeltaU.Deltau"
+>PDE.FiniteVolume.Fluxes.Roe.DeltaU.Deltau</A> deltau1;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_DeltaU.html#PDE.FiniteVolume.Fluxes.Roe.DeltaU.Deltau"
+>PDE.FiniteVolume.Fluxes.Roe.DeltaU.Deltau</A> deltau2;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_FluxDifference.html#PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff"
+>PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff</A> fluxDiff;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_FluxDifference.html#PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff"
+>PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff</A> fluxDiff1;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_FluxDifference.html#PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff"
+>PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff</A> fluxDiff2;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_1[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_2[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> vplus[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> vminus[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product4[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product5[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> const[worldModel1.n + 1](y=0.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n + 1](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add1[worldModel1.n + 1](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> pminus[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> pplus[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> const1[worldModel1.n + 1](y=
+        0.4);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> hminus[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> hplus[worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_IntegratorRoe.html#PDE.FiniteVolume.Fluxes.Roe.IntegratorRoe.Integrator"
+>PDE.FiniteVolume.Fluxes.Roe.IntegratorRoe.Integrator</A> integrator(
+                                               bcl=0, bcr=0);
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_AverageFilter.html#PDE.FiniteVolume.Fluxes.Roe.AverageFilter.Filter"
+>PDE.FiniteVolume.Fluxes.Roe.AverageFilter.Filter</A> Density;
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_AverageFilter.html#PDE.FiniteVolume.Fluxes.Roe.AverageFilter.Filter"
+>PDE.FiniteVolume.Fluxes.Roe.AverageFilter.Filter</A> Momentum(
+                                         row=2);
+  <A HREF="PDE_FiniteVolume_Fluxes_Roe_AverageFilter.html#PDE.FiniteVolume.Fluxes.Roe.AverageFilter.Filter"
+>PDE.FiniteVolume.Fluxes.Roe.AverageFilter.Filter</A> Energy(
+                                       row=3);
+  <A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.IC"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.IC</A> iC;
+  <A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCL"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCL</A> bCL;
+  <A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCR"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCR</A> bCR;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(vaverage.y, lambdas.u);
+  <font color="red">connect</font>(aaverage.y, lambdas.u1);
+  <font color="red">connect</font>(vaverage.y, waves.u);
+  <font color="red">connect</font>(aaverage.y, waves.u1);
+  <font color="red">connect</font>(haverage.y, waves.u2);
+  <font color="red">connect</font>(aaverage.y, a.u1);
+  <font color="red">connect</font>(deltau.y, a.u2);
+  <font color="red">connect</font>(deltau1.y, a.u3);
+  <font color="red">connect</font>(deltau2.y, a.u4);
+  <font color="red">connect</font>(daverage.y, a.u);
+  <font color="red">connect</font>(lambdas.y, fluxDiff.u2);
+  <font color="red">connect</font>(waves.y, fluxDiff.u1);
+  <font color="red">connect</font>(a.y, fluxDiff.u);
+  <font color="red">connect</font>(lambdas.y1, fluxDiff1.u2);
+  <font color="red">connect</font>(lambdas.y2, fluxDiff2.u2);
+  <font color="red">connect</font>(waves.y1y, fluxDiff1.u1);
+  <font color="red">connect</font>(waves.y2y, fluxDiff2.u1);
+  <font color="red">connect</font>(a.y1, fluxDiff1.u);
+  <font color="red">connect</font>(a.y2, fluxDiff2.u);
+  <font color="red">connect</font>(fluxDiff.y, add3_1.u1);
+  <font color="red">connect</font>(fluxDiff1.y, add3_1.u2);
+  <font color="red">connect</font>(fluxDiff2.y, add3_1.u3);
+  <font color="red">connect</font>(fluxDiff.y1, add3_2.u1);
+  <font color="red">connect</font>(fluxDiff1.y1, add3_2.u2);
+  <font color="red">connect</font>(fluxDiff2.y1, add3_2.u3);
+  <font color="red">connect</font>(rec1.y, vminus.u1);
+  <font color="red">connect</font>(rec1.y1, vplus.u1);
+  <font color="red">connect</font>(rec.y, vminus.u2);
+  <font color="red">connect</font>(rec.y1, vplus.u2);
+  <font color="red">connect</font>(vminus.y, product.u1);
+  <font color="red">connect</font>(vminus.y, product.u2);
+  <font color="red">connect</font>(vplus.y, product1.u1);
+  <font color="red">connect</font>(vplus.y, product1.u2);
+  <font color="red">connect</font>(product.y, product2.u2);
+  <font color="red">connect</font>(product1.y, product3.u2);
+  <font color="red">connect</font>(rec.y, product2.u1);
+  <font color="red">connect</font>(rec.y1, product3.u1);
+  <font color="red">connect</font>(const.y, product4.u2);
+  <font color="red">connect</font>(const.y, product5.u1);
+  <font color="red">connect</font>(product2.y, product4.u1);
+  <font color="red">connect</font>(product3.y, product5.u2);
+  <font color="red">connect</font>(product4.y, add.u2);
+  <font color="red">connect</font>(product5.y, add1.u2);
+  <font color="red">connect</font>(rec2.y, add.u1);
+  <font color="red">connect</font>(rec2.y1, add1.u1);
+  <font color="red">connect</font>(const1.y, pminus.u2);
+  <font color="red">connect</font>(const1.y, pplus.u1);
+  <font color="red">connect</font>(add.y, pminus.u1);
+  <font color="red">connect</font>(add1.y, pplus.u2);
+  <font color="red">connect</font>(rec2.y, add2.u1);
+  <font color="red">connect</font>(rec2.y1, add3.u1);
+  <font color="red">connect</font>(pminus.y, add2.u2);
+  <font color="red">connect</font>(pplus.y, add3.u2);
+  <font color="red">connect</font>(rec.y, vaverage.u);
+  <font color="red">connect</font>(vminus.y, vaverage.u1);
+  <font color="red">connect</font>(rec.y1, vaverage.u2);
+  <font color="red">connect</font>(vplus.y, vaverage.u3);
+  <font color="red">connect</font>(haverage.y, aaverage.u);
+  <font color="red">connect</font>(vaverage.y, aaverage.u1);
+  <font color="red">connect</font>(add2.y, hminus.u1);
+  <font color="red">connect</font>(add3.y, hplus.u1);
+  <font color="red">connect</font>(rec.y, hminus.u2);
+  <font color="red">connect</font>(rec.y1, hplus.u2);
+  <font color="red">connect</font>(rec.y, haverage.u);
+  <font color="red">connect</font>(hminus.y, haverage.u1);
+  <font color="red">connect</font>(rec.y1, haverage.u2);
+  <font color="red">connect</font>(hplus.y, haverage.u3);
+  <font color="red">connect</font>(rec.y, daverage.u);
+  <font color="red">connect</font>(rec.y1, daverage.u1);
+  <font color="red">connect</font>(rec.y, deltau.u);
+  <font color="red">connect</font>(rec.y1, deltau.u1);
+  <font color="red">connect</font>(vminus.y, deltau1.u);
+  <font color="red">connect</font>(vplus.y, deltau1.u1);
+  <font color="red">connect</font>(pminus.y, deltau2.u);
+  <font color="red">connect</font>(pplus.y, deltau2.u1);
+  <font color="red">connect</font>(Density.y, rec.u);
+  <font color="red">connect</font>(Momentum.y, rec1.u);
+  <font color="red">connect</font>(integrator.y, Density.u);
+  <font color="red">connect</font>(integrator.y, Momentum.u);
+  <font color="red">connect</font>(integrator.y, Energy.u);
+  <font color="red">connect</font>(Energy.y, rec2.u);
+  <font color="red">connect</font>(add3_1.y, integrator.u);
+  <font color="red">connect</font>(add3_2.y, integrator.u4);
+  <font color="red">connect</font>(iC.y, integrator.u1);
+  <font color="red">connect</font>(bCL.y, integrator.u2);
+  <font color="red">connect</font>(bCR.y, integrator.u3);
+<font color="blue">end </font>Euler;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE IC<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.ICI.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.IC" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.IC"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe</A>.IC</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.ICD.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.IC">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This block implements initial condition for the Euler equations.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> IC
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+  y[1, j] = 1.0;
+  y[2, j] = 0.0;
+  y[3, j] = 2.5;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n];
+<font color="blue">end </font>IC;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BCL<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCLI.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCL" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCL"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe</A>.BCL</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.ICD.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCL">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This block implements left boundary condition for the Euler equations.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.gcl]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> BCL
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.gcl];
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:gcl<font color="blue"> loop</font>
+  y[1, j] = 1.0;
+  y[2, j] = 0.0;
+  y[3, j] = 2.5;
+<font color="blue">end for</font>;
+
+<font color="blue">end </font>BCL;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BCR<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCLI.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCR" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCR"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_Roe.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe</A>.BCR</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.ICD.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.Roe.BCR">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This block implements right boundary condition for the Euler equations.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> BCR
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:gcr<font color="blue"> loop</font>
+  y[1, j] = 0.125;
+  y[2, j] = 0.0;
+  y[3, j] = 0.25;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.gcr];
+<font color="blue">end </font>BCR;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:56 2007.
+</address></BODY>
+</HTML>

@@ -1,0 +1,328 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.LDLR.d</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE d<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.LDLR.d"></A><A HREF="PDE_FiniteVolume_LDLR.html#PDE.FiniteVolume.LDLR"
+>PDE.FiniteVolume.LDLR</A>.d</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the lateral derivatives d<sub>1</sub> and d<sub>2</sub>
+</p>
+
+<img align=middle src="..\Images\log4.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.d.D1minusS.png" ALT="PDE.FiniteVolume.LDLR.d.D1minus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d.D1minus"
+>D1minus</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.d.D1minusS.png" ALT="PDE.FiniteVolume.LDLR.d.D2minus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d.D2minus"
+>D2minus</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.d.D1minusS.png" ALT="PDE.FiniteVolume.LDLR.d.D1plus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d.D1plus"
+>D1plus</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.d.D1minusS.png" ALT="PDE.FiniteVolume.LDLR.d.D2plus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d.D2plus"
+>D2plus</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE D1minus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.d.D1minusI.png" ALT="PDE.FiniteVolume.LDLR.d.D1minus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.d.D1minus"></A><A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d"
+>PDE.FiniteVolume.LDLR.d</A>.D1minus</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.Roe.AverageFilter.FilterD.png" ALT="PDE.FiniteVolume.LDLR.d.D1minus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the lateral derivative d<sub>1</sub> for u<sup>-</sup>(x<sub>i+1/2</sub>)
+</p>
+
+<img align=middle src="..\Images\log5.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> D1minus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Real deltax = 1/n;
+
+<font color="blue">equation </font>
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">for </font>i<font color="blue"> in </font>gcl:gcl+n<font color="blue"> loop</font>
+  y[i-gcl+1] = (u[i] - u[i-1])/deltax;
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>D1minus;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE D2minus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.d.D1minusI.png" ALT="PDE.FiniteVolume.LDLR.d.D2minus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.d.D2minus"></A><A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d"
+>PDE.FiniteVolume.LDLR.d</A>.D2minus</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.Roe.AverageFilter.FilterD.png" ALT="PDE.FiniteVolume.LDLR.d.D2minus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the lateral derivative d<sub>2</sub> for u<sup>-</sup>(x<sub>i+1/2</sub>)
+</p>
+
+<img align=middle src="..\Images\log6.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> D2minus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Real deltax = 1/n;
+
+<font color="blue">equation </font>
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">for </font>i<font color="blue"> in </font>gcl:gcl+n<font color="blue"> loop</font>
+  y[i-gcl+1] = (u[i+1] - u[i])/deltax;
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>D2minus;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE D1plus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.d.D1plusI.png" ALT="PDE.FiniteVolume.LDLR.d.D1plus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.d.D1plus"></A><A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d"
+>PDE.FiniteVolume.LDLR.d</A>.D1plus</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.Roe.AverageFilter.FilterD.png" ALT="PDE.FiniteVolume.LDLR.d.D1plus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the lateral derivative d<sub>1</sub> for u<sup>+</sup>(x<sub>i+1/2</sub>)
+</p>
+
+<img align=middle src="..\Images\log7.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> D1plus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Real deltax = 1/n;
+
+<font color="blue">equation </font>
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">for </font>i<font color="blue"> in </font>gcl:gcl+n<font color="blue"> loop</font>
+  y[i-gcl+1] = (u[i+1] - u[i])/deltax;
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>D1plus;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE D2plus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.d.D2plusI.png" ALT="PDE.FiniteVolume.LDLR.d.D2plus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.d.D2plus"></A><A HREF="PDE_FiniteVolume_LDLR_d.html#PDE.FiniteVolume.LDLR.d"
+>PDE.FiniteVolume.LDLR.d</A>.D2plus</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.Roe.AverageFilter.FilterD.png" ALT="PDE.FiniteVolume.LDLR.d.D2plus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the lateral derivative d<sub>2</sub> for u<sup>+</sup>(x<sub>i+1/2</sub>)
+</p>
+
+<img align=middle src="..\Images\log8.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> D2plus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Real deltax = 1/n;
+
+<font color="blue">equation </font>
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">for </font>i<font color="blue"> in </font>gcl:gcl+n<font color="blue"> loop</font>
+  y[i-gcl+1] = (u[i+2] - u[i+1])/deltax;
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>D2plus;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:40 2007.
+</address></BODY>
+</HTML>

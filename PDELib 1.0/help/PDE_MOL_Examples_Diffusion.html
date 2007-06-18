@@ -1,0 +1,299 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.Diffusion</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Diffusion<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Diffusion"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.Diffusion</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains diffusion equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DiffusionEquation"
+>DiffusionEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Diffusion.DiffusionICS.png" ALT="PDE.MOL.Examples.Diffusion.DiffusionIC" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DiffusionIC"
+>DiffusionIC</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Diffusion.DiffusionICS.png" ALT="PDE.MOL.Examples.Diffusion.DIC1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DIC1"
+>DIC1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Diffusion.DiffusionAnalyticS.png" ALT="PDE.MOL.Examples.Diffusion.DiffusionAnalytic" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DiffusionAnalytic"
+>DiffusionAnalytic</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE DiffusionEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Diffusion.DiffusionEquation"></A><A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion"
+>PDE.MOL.Examples.Diffusion</A>.DiffusionEquation</H2>
+<IMG SRC="PDE.MOL.Examples.Diffusion.DiffusionEquationD.png" ALT="PDE.MOL.Examples.Diffusion.DiffusionEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Diffusion equation</font></h3>
+<p>
+Implements the diffusion equation
+</p>
+
+<img align=middle src="..\Images\d4.png">
+
+
+<p>
+where sigma is a constant value. The initial condition is
+</p>
+
+<img align=middle src="..\Images\d1.png">
+
+<p>
+and boundary conditions are
+</p>
+
+<img align=middle src="..\Images\d2.png">
+
+<p>
+The analytical solution of this problem is implemented in <b>DiffusionAnalytic</b> block
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> DiffusionEquation
+
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>PDE.MOL.Integrator.UniversalIntegrator</A> Diffusion(
+    vb=2,
+    icb=2,
+    bcl=1,
+    n=worldModel1.n,
+    ve=worldModel1.n - 1,
+    ice=worldModel1.n - 1,
+    bcr=1);
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(n=40);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> sigma[worldModel1.n](y=0.01);
+  <A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DIC1"
+>DIC1</A> dIC1_1;
+  <A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DiffusionAnalytic"
+>DiffusionAnalytic</A> diffusionAnalytic(alpha=0.1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BC;
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_xx"
+>PDE.MOL.SpaceDerivative.Derivatives.u_xx</A> u_xx(
+                            bcr=-1);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(product.y, Diffusion.u);
+  <font color="red">connect</font>(dIC1_1.y, Diffusion.u1);
+  <font color="red">connect</font>(BC.y, Diffusion.u2);
+  <font color="red">connect</font>(BC.y, Diffusion.u3);
+  <font color="red">connect</font>(sigma.y, product.u2);
+  <font color="red">connect</font>(u_xx.y, product.u1);
+  <font color="red">connect</font>(Diffusion.y, u_xx.u);
+<font color="blue">end </font>DiffusionEquation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE DiffusionIC<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Diffusion.DiffusionICI.png" ALT="PDE.MOL.Examples.Diffusion.DiffusionIC" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Diffusion.DiffusionIC"></A><A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion"
+>PDE.MOL.Examples.Diffusion</A>.DiffusionIC</H2>
+<IMG SRC="PDE.MOL.Examples.Diffusion.DiffusionICD.png" ALT="PDE.MOL.Examples.Diffusion.DiffusionIC">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition cos(x) of the diffusion equation
+</p>
+
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> DiffusionIC
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+  <font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer n = worldModel1.n;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.IntegerExpression"
+>Modelica.Blocks.Sources.IntegerExpression</A> integerExpression[worldModel1.n](
+      y=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.IntegerExpression"
+>Modelica.Blocks.Sources.IntegerExpression</A> integerExpression1[worldModel1.n](y=n - 1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> realExpression[worldModel1.n](y=1.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Cos"
+>Modelica.Blocks.Math.Cos</A> cos[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</A> index_i[worldModel1.n](k=1:worldModel1.
+        n);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(integerExpression.y, add.u2);
+  <font color="red">connect</font>(add.y, division.u1);
+  <font color="red">connect</font>(integerExpression1.y, division.u2);
+  <font color="red">connect</font>(division.y, product.u1);
+  <font color="red">connect</font>(realExpression.y, product.u2);
+  <font color="red">connect</font>(cos.y, y);
+  <font color="red">connect</font>(index_i.y, add.u1);
+  <font color="red">connect</font>(product.y, cos.u);
+<font color="blue">end </font>DiffusionIC;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE DIC1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Diffusion.DIC1I.png" ALT="PDE.MOL.Examples.Diffusion.DIC1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Diffusion.DIC1"></A><A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion"
+>PDE.MOL.Examples.Diffusion</A>.DIC1</H2>
+<IMG SRC="PDE.MOL.Examples.Diffusion.DIC1D.png" ALT="PDE.MOL.Examples.Diffusion.DIC1">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition of the diffusion equation
+</p>
+
+<img align=middle src="..\Images\d1.png">
+
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> DIC1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] =<font color="red"> sin</font>(3.14*((i-1)/n)) + 0.5*<font color="red">sin</font>(3*3.14*((i-1)/n));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>DIC1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE DiffusionAnalytic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Diffusion.DiffusionAnalyticI.png" ALT="PDE.MOL.Examples.Diffusion.DiffusionAnalytic" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Diffusion.DiffusionAnalytic"></A><A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion"
+>PDE.MOL.Examples.Diffusion</A>.DiffusionAnalytic</H2>
+<IMG SRC="PDE.MOL.Examples.Diffusion.DIC1D.png" ALT="PDE.MOL.Examples.Diffusion.DiffusionAnalytic">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the analytical solution of the diffusion equation
+</p>
+
+<img align=middle src="..\Images\d3.png">
+
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>alpha</TD><TD>0.0</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> DiffusionAnalytic
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon4"
+>Icons.BlockIcon4</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Real alpha = 0.0;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] =<font color="red"> exp</font>(-((3.14*alpha)^2)*time)*<font color="red">sin</font>(3.14*((i-1)/n)) + 0.5*<font color="red">exp</font>(-((3*3.14*alpha)^2)*time)*<font color="red">sin</font>(3*3.14*((i-1)/n));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>DiffusionAnalytic;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:19 2007.
+</address></BODY>
+</HTML>

@@ -1,0 +1,186 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.FluxLimiter.FLIntegrator</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FLIntegrator<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.FluxLimiter.FLIntegrator"></A><A HREF="PDE_FiniteVolume_FluxLimiter.html#PDE.FiniteVolume.FluxLimiter"
+>PDE.FiniteVolume.FluxLimiter</A>.FLIntegrator</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains integrator block that implements Finite Volume Methods by using flux limiters.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegratorS.png" ALT="PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegrator" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_FLIntegrator.html#PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegrator"
+>FLIntegrator</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FLIntegrator<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegratorI.png" ALT="PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegrator" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegrator"></A><A HREF="PDE_FiniteVolume_FluxLimiter_FLIntegrator.html#PDE.FiniteVolume.FluxLimiter.FLIntegrator"
+>PDE.FiniteVolume.FluxLimiter.FLIntegrator</A>.FLIntegrator</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegratorD.png" ALT="PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegrator">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The FLIntegrator takes as input the two fluctuation matrices, limited flux matrix, initial condition matrix and two boundary condition matrices. <br>
+As output the block gives the average matrix <b>Q</b>. It implements the average update rule
+</p>
+
+<img align=middle src="..\Images\fl6.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>beta</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>delta_x</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>delta_t</TD><TD>0.1</TD><TD>&nbsp;</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Unknowns</TD></TR>
+<TR><TD>Integer</TD><TD>vb</TD><TD>gcl + 1</TD><TD> The left most unknown</TD></TR>
+<TR><TD>Integer</TD><TD>ve</TD><TD>gcl + worldModel1.n</TD><TD> The right most unknown</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Initial Condition</TD></TR>
+<TR><TD>Integer</TD><TD>icb</TD><TD>gcl + 1</TD><TD> Begin of the initial condition</TD></TR>
+<TR><TD>Integer</TD><TD>ice</TD><TD>gcl + worldModel1.n</TD><TD> End of the initial condition</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Boundary Conditions</TD></TR>
+<TR><TD>Integer</TD><TD>bcl</TD><TD>1</TD><TD> Boundary condition at the left (0: no; 1: yes)</TD></TR>
+<TR><TD>Integer</TD><TD>bcr</TD><TD>1</TD><TD> Boundary condition at the right (0: no; 1: yes)</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>2</TD><TD> Number of ghost cells at the left</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>2</TD><TD> Number of ghost cells at the right</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u4[worldModel1.m, worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u5[worldModel1.m, worldModel1.gcl]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u6[worldModel1.m, worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> FLIntegrator
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon1"
+>Icons.BlockIcon1</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Real beta = 1;
+<font color="blue">parameter </font>Integer vb = gcl+1 <font color="darkgreen">&quot;|Unknowns| The left most unknown&quot;</font>;
+<font color="blue">parameter </font>Integer ve = gcl + worldModel1.n <font color="darkgreen">&quot;|Unknowns| The right most unknown&quot;</font>;
+
+<font color="blue">parameter </font>Integer icb = gcl+1 <font color="darkgreen">
+    &quot;|Initial Condition| Begin of the initial condition&quot;</font>;
+<font color="blue">parameter </font>Integer ice = gcl + worldModel1.n <font color="darkgreen">
+    &quot;|Initial Condition| End of the initial condition&quot;</font>;
+
+<font color="blue">parameter </font>Integer bcl = 1 <font color="darkgreen">
+    &quot;|Boundary Conditions| Boundary condition at the left (0: no; 1: yes)&quot;</font>;
+<font color="blue">parameter </font>Integer bcr = 1 <font color="darkgreen">
+    &quot;|Boundary Conditions| Boundary condition at the right (0: no; 1: yes)&quot;</font>;
+
+<font color="blue">parameter </font>Integer gcl = 2 <font color="darkgreen">
+    &quot;|Boundary Conditions| Number of ghost cells at the left&quot;</font>;
+<font color="blue">parameter </font>Integer gcr = 2 <font color="darkgreen">
+    &quot;|Boundary Conditions| Number of ghost cells at the right&quot;</font>;
+
+<font color="blue">parameter </font>Real delta_x = 1/n;
+<font color="blue">parameter </font>Real delta_t = 0.1;
+
+Real q[worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr];
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u4[worldModel1.m,worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u5[worldModel1.m,worldModel1.gcl];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u6[worldModel1.m,worldModel1.gcr];
+<font color="blue">equation </font>
+  y = q;
+
+<font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+  <font color="blue">for </font>j<font color="blue"> in </font>1:gcl<font color="blue"> loop</font>
+     q[i, j]= u5[i, j];
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+  <font color="blue">if </font>bcl == 1<font color="blue"> then</font>
+     q[i, gcl+1] = q[i, gcl];
+  <font color="blue">end if</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+  <font color="blue">for </font>j<font color="blue"> in </font>1:gcr<font color="blue"> loop</font>
+     q[i, gcl+n+j] = u6[i, j];
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+  <font color="blue">if </font>bcr == 1<font color="blue"> then</font>
+     q[i, gcl+n] = q[i, gcl+n+1];
+  <font color="blue">end if</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>vb:ve<font color="blue"> loop</font>
+    <font color="red">der</font>(q[j, i]) = -(1/delta_x)*(u[j, i-gcl] + u1[j, i-gcl+1]) - (1/delta_x)*(u2[j, i-gcl+1] - u2[j, i-gcl]);
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">initial </font><font color="blue">equation </font>
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>icb:ice<font color="blue"> loop</font>
+    q[j, i] =  u4[j, i-gcl];
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + worldModel1.gcl + worldModel1.gcr];
+<font color="blue">end </font>FLIntegrator;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:00 2007.
+</address></BODY>
+</HTML>

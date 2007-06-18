@@ -1,0 +1,251 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.SpaceDerivative.Derivatives</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Derivatives<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.SpaceDerivative.Derivatives"></A><A HREF="PDE_MOL_SpaceDerivative.html#PDE.MOL.SpaceDerivative"
+>PDE.MOL.SpaceDerivative</A>.Derivatives</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The Derivatives package contains blocks for the computation of the derivatives with respect to space. <br>
+The derivative computation is based on Newton-Gregory backward polynomials
+</p>
+<img align=middle src="..\Images\f1.png">
+<p>
+where x<sub>n</sub> is the last grid point, s = (x-x<sub>n</sub>)/h and h = x<sub>i+1</sub> - x<sub>i</sub> (for i = 0,..., n-1). <br>
+By using this polynomial we can compute the first and second space derivatives, that are implemented in the <br>
+respective blocks. To compute for example the first derivative we must do
+</p>
+<img align=middle src="..\Images\f2.png">
+
+<p>
+where h = x<sub>i+1</sub> - x<sub>i</sub> (for i = 0,..., n-1). We assume here that the grid points are spaced equally.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.MOL.SpaceDerivative.Derivatives.u_xS.png" ALT="PDE.MOL.SpaceDerivative.Derivatives.u_x" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>u_x</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.SpaceDerivative.Derivatives.u_xxS.png" ALT="PDE.MOL.SpaceDerivative.Derivatives.u_xx" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_xx"
+>u_xx</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_x<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.SpaceDerivative.Derivatives.u_xI.png" ALT="PDE.MOL.SpaceDerivative.Derivatives.u_x" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.SpaceDerivative.Derivatives.u_x"></A><A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives"
+>PDE.MOL.SpaceDerivative.Derivatives</A>.u_x</H2>
+<IMG SRC="PDE.MOL.SpaceDerivative.Derivatives.u_xD.png" ALT="PDE.MOL.SpaceDerivative.Derivatives.u_x">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The <b>u_x</b> block computes the first-order space derivative. By using the Newton-Gregory backward polynomial we <br>
+obtain
+</p>
+
+<img align=middle src="..\Images\f2.png">
+
+<p>
+If we wish a second-order central difference approximation, we need to fit the polynomial through the three points <br>
+x<sub>i-1</sub>, x<sub>i</sub>, x<sub>i+1</sub>. This means to write the polynomial for example around the point x<sub>i+1</sub>,
+drop the higher-oder terms and set s = -1 to obtain
+</p>
+
+<img align=middle src="..\Images\f9.png">
+
+<p>
+where h = x<sub>i+1</sub> - x<sub>i</sub> (for i = 0,..., n-1). We assume here that the grid points are spaced equally. <br>
+For the boundary point x<sub>1</sub> we use biased formula and obtain
+</p>
+
+<img align=middle src="..\Images\f10.png">
+
+<p>
+By using the same idea we obtain a biased formula for the boundary point x<sub>n</sub>
+</p>
+
+<img align=middle src="..\Images\f11.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>method</TD><TD>worldModel1.qss</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Boundary Conditions</TD></TR>
+<TR><TD>Integer</TD><TD>bcl</TD><TD>0</TD><TD> Type of the boundary condition at the left (-1:symmtery; 0: none)</TD></TR>
+<TR><TD>Integer</TD><TD>bcr</TD><TD>0</TD><TD> Type of the boundary condition at the right (-1:symmtery; 0: none)</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_x
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon2"
+>PDE.Icons.BlockIcon2</A>;
+
+  <font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <font color="blue">parameter </font>Integer method = worldModel1.qss;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer n = worldModel1.n;
+
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer bcl = 0 <font color="darkgreen">
+    &quot;|Boundary Conditions| Type of the boundary condition at the left (-1:symmtery; 0: none)&quot;</font>;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer bcr = 0 <font color="darkgreen">
+    &quot;|Boundary Conditions| Type of the boundary condition at the right (-1:symmtery; 0: none)&quot;</font>;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+  <A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4"
+>PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4</A> der5_1 <font color="blue">if </font>
+                                          method == 1;
+  <A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2"
+>PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2</A> der1 <font color="blue">if </font>
+                                        method == 2;
+  <A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6"
+>PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6</A> cD6B6_1 <font color="blue">if </font>
+                                           method == 3;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u, der5_1.u);
+  <font color="red">connect</font>(der5_1.y, y);
+  <font color="red">connect</font>(u, der1.u);
+  <font color="red">connect</font>(u, cD6B6_1.u);
+  <font color="red">connect</font>(cD6B6_1.y, y);
+  <font color="red">connect</font>(der1.y, y);
+<font color="blue">end </font>u_x;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_xx<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.SpaceDerivative.Derivatives.u_xxI.png" ALT="PDE.MOL.SpaceDerivative.Derivatives.u_xx" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.SpaceDerivative.Derivatives.u_xx"></A><A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives"
+>PDE.MOL.SpaceDerivative.Derivatives</A>.u_xx</H2>
+<IMG SRC="PDE.MOL.SpaceDerivative.Derivatives.u_xxD.png" ALT="PDE.MOL.SpaceDerivative.Derivatives.u_xx">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The <b>u_xx</b> block computes the second-order space derivative. By using the Newton-Gregory backward polynomial we <br>
+obtain
+</p>
+
+<img align=middle src="..\Images\f3.png">
+
+<p>
+where h = x<sub>i+1</sub> - x<sub>i</sub> (for i = 0,..., n-1). We assume here that the grid points are spaced equally. <br>
+If we wish a second-order central difference approximation, we need to fit the polynomial through the three points <br>
+x<sub>i-1</sub>, x<sub>i</sub>, x<sub>i+1</sub>. This means to write the polynomial for example around the point x<sub>i+1</sub> and drop the higher-oder terms to obtain
+</p>
+
+<img align=middle src="..\Images\f4.png">
+
+<p>
+and finally, to evaluate the second-order space derivative around the point x<sub>i</sub> we need to set s = -1 to get
+</p>
+
+<img align=middle src="..\Images\f5.png">
+
+<p>
+The second-order central difference scheme is implemented in <b>u_xxCD2B2</b> block. <br>
+By following the same approach we can compute the fourth-order central difference scheme. This time we need more
+terms in the polynomial
+</p>
+
+<img align=middle src="..\Images\f6.png">
+
+<p>
+and so we obtain
+</p>
+
+<img align=middle src="..\Images\f7.png">
+
+<p>
+for the boundary points we use a biased formula and we obtain
+</p>
+
+<img align=middle src="..\Images\f8.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>u_xx</TD><TD>worldModel1.u_xx</TD><TD>&nbsp;</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Boundary Conditions</TD></TR>
+<TR><TD>Integer</TD><TD>bcl</TD><TD>0</TD><TD> Type of the boundary condition at the left (-1:symmtery; 0: none)</TD></TR>
+<TR><TD>Integer</TD><TD>bcr</TD><TD>0</TD><TD> Type of the boundary condition at the right (-1:symmtery; 0: none)</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_xx
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon3"
+>Icons.BlockIcon3</A>;
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">inner </font><font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer u_xx = worldModel1.u_xx;
+
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer bcl = 0 <font color="darkgreen">
+    &quot;|Boundary Conditions| Type of the boundary condition at the left (-1:symmtery; 0: none)&quot;</font>;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer bcr = 0 <font color="darkgreen">
+    &quot;|Boundary Conditions| Type of the boundary condition at the right (-1:symmtery; 0: none)&quot;</font>;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+  <A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2"
+>PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2</A> u_xxCD2B2_1 <font color="blue">if </font>
+                           u_xx == 1;
+  <A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4"
+>PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4</A> derivatorSecond <font color="blue">if </font>
+                                     u_xx == 2;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u, u_xxCD2B2_1.u);
+  <font color="red">connect</font>(u, derivatorSecond.u);
+  <font color="red">connect</font>(u_xxCD2B2_1.y, y);
+  <font color="red">connect</font>(derivatorSecond.y, y);
+<font color="blue">end </font>u_xx;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:14 2007.
+</address></BODY>
+</HTML>

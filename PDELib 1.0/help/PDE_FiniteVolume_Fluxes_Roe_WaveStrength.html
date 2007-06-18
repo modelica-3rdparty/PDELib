@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Fluxes.Roe.WaveStrength</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE WaveStrength<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Fluxes.Roe.WaveStrength"></A><A HREF="PDE_FiniteVolume_Fluxes_Roe.html#PDE.FiniteVolume.Fluxes.Roe"
+>PDE.FiniteVolume.Fluxes.Roe</A>.WaveStrength</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains <i>a</i> block that computes the wave strengths.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.Fluxes.Roe.WaveStrength.aS.png" ALT="PDE.FiniteVolume.Fluxes.Roe.WaveStrength.a" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_Fluxes_Roe_WaveStrength.html#PDE.FiniteVolume.Fluxes.Roe.WaveStrength.a"
+>a</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE a<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.Fluxes.Roe.WaveStrength.aI.png" ALT="PDE.FiniteVolume.Fluxes.Roe.WaveStrength.a" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.Fluxes.Roe.WaveStrength.a"></A><A HREF="PDE_FiniteVolume_Fluxes_Roe_WaveStrength.html#PDE.FiniteVolume.Fluxes.Roe.WaveStrength"
+>PDE.FiniteVolume.Fluxes.Roe.WaveStrength</A>.a</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.Roe.WaveStrength.aD.png" ALT="PDE.FiniteVolume.Fluxes.Roe.WaveStrength.a">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Takes the averages rho, a and differences deltarho, deltav and deltap as input and computes the three wave strengths
+</p>
+
+<img align=middle src="..\Images\r11.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u3[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u4[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y2[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> a
+
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="darkgreen">//Inserting 0.0001 to avoid division by zero</font>
+  y[j] = (1/(2*((u1[j]+0.0001)^2)))*(u4[j] - u[j]*u1[j]*u3[j]);
+  y1[j] = (1/(((u1[j]+0.0001)^2)))*((u1[j]^2)*u2[j] - u4[j]);
+  y2[j] = (1/(2*((u1[j]+0.0001)^2)))*(u4[j] + u[j]*u1[j]*u3[j]);
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u4[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y2[worldModel1.n + 1];
+<font color="blue">end </font>a;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:39 2007.
+</address></BODY>
+</HTML>

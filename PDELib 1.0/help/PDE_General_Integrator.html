@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.General.Integrator</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Integrator<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.General.Integrator"></A><A HREF="PDE_General.html#PDE.General"
+>PDE.General</A>.Integrator</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains GeneralIntegrator block that implements the Method of Lines and Finite Volume Methods.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.General.Integrator.GeneralIntegratorS.png" ALT="PDE.General.Integrator.GeneralIntegrator" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_General_Integrator.html#PDE.General.Integrator.GeneralIntegrator"
+>GeneralIntegrator</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE GeneralIntegrator<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.General.Integrator.GeneralIntegratorI.png" ALT="PDE.General.Integrator.GeneralIntegrator" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.General.Integrator.GeneralIntegrator"></A><A HREF="PDE_General_Integrator.html#PDE.General.Integrator"
+>PDE.General.Integrator</A>.GeneralIntegrator</H2>
+<IMG SRC="PDE.General.Integrator.GeneralIntegratorD.png" ALT="PDE.General.Integrator.GeneralIntegrator">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The GeneralIntegrator block combines two integrators into one block. The scope of the block is to make more abstract the <br>
+procedure of solving PDE. This provide transparence to the user, that can just take one integrator block and choose the numerical <br>
+method to use. The integrator parameter allows to select the method: 1 for MOL and 2 for FVM. The treatment of the IC, BCL and BCR <br>
+inputs is the same as for other integrator blocks.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>integrator</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>vb</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>ve</TD><TD>n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>icb</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>ice</TD><TD>n</TD><TD>&nbsp;</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Boundary Conditions</TD></TR>
+<TR><TD>Integer</TD><TD>bcl</TD><TD>0</TD><TD> Type of the boundary condition at the left (-1:symmtery; 0: none)</TD></TR>
+<TR><TD>Integer</TD><TD>bcr</TD><TD>0</TD><TD> Type of the boundary condition at the right (-1:symmtery; 0: none)</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u3</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u4</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y1[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> GeneralIntegrator
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon1"
+>Icons.BlockIcon1</A>;
+
+  <font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer n = worldModel1.n;
+  <font color="blue">parameter </font>Integer integrator = 1;
+
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer bcl = 0 <font color="darkgreen">
+    &quot;|Boundary Conditions| Type of the boundary condition at the left (-1:symmtery; 0: none)&quot;</font>;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer bcr = 0 <font color="darkgreen">
+    &quot;|Boundary Conditions| Type of the boundary condition at the right (-1:symmtery; 0: none)&quot;</font>;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer vb = 1;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer ve = n;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer icb = 1;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer ice = n;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u3;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u4;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y1[worldModel1.n + worldModel1.gcl +
+    worldModel1.gcr];
+  <A HREF="PDE_General_Interfaces.html#PDE.General.Interfaces.IntegratorMOL"
+>PDE.General.Interfaces.IntegratorMOL</A> integratorMOL <font color="blue">if </font>
+                                 integrator == 1;
+  <A HREF="PDE_General_Interfaces.html#PDE.General.Interfaces.IntegratorFVM"
+>PDE.General.Interfaces.IntegratorFVM</A> integratorFVM(
+                              bcl=0, bcr=0) <font color="blue">if </font>
+                                 integrator == 2;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u, integratorMOL.u);
+  <font color="red">connect</font>(u1, integratorFVM.u);
+  <font color="red">connect</font>(u2, integratorMOL.u1);
+  <font color="red">connect</font>(u2, integratorFVM.u2);
+  <font color="red">connect</font>(u3, integratorMOL.u2);
+  <font color="red">connect</font>(u3, integratorFVM.u3[1]);
+  <font color="red">connect</font>(u3, integratorFVM.u3[2]);
+  <font color="red">connect</font>(u4, integratorFVM.u4[1]);
+  <font color="red">connect</font>(u4, integratorFVM.u4[2]);
+  <font color="red">connect</font>(u4, integratorMOL.u3);
+  <font color="red">connect</font>(integratorMOL.y, y);
+  <font color="red">connect</font>(integratorFVM.y, y1);
+<font color="blue">end </font>GeneralIntegrator;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:07 2007.
+</address></BODY>
+</HTML>

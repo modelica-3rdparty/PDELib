@@ -1,0 +1,224 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.Burger</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Burger<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Burger"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.Burger</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Burger큦 equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger.BurgerEquation"
+>BurgerEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Burger.BICxS.png" ALT="PDE.MOL.Examples.Burger.BICx" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger.BICx"
+>BICx</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Burger.BANS.png" ALT="PDE.MOL.Examples.Burger.BAN" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger.BAN"
+>BAN</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BurgerEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Burger.BurgerEquation"></A><A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger"
+>PDE.MOL.Examples.Burger</A>.BurgerEquation</H2>
+<IMG SRC="PDE.MOL.Examples.Burger.BurgerEquationD.png" ALT="PDE.MOL.Examples.Burger.BurgerEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Burger큦 equation</font></h3>
+<p>
+Implements the inviscid Burger큦 equation
+</p>
+
+<img align=middle src="..\Images\b1.png">
+
+<p>
+The initial condition is
+</p>
+
+<img align=middle src="..\Images\b2.png">
+
+<p>
+and boundary conditions are
+</p>
+
+<p>
+<img align=middle src="..\Images\b3.png">
+</p>
+
+
+<p>
+The analytical solution of this problem is implemented in <b>BAN</b> block
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> BurgerEquation
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(             qss=2, n=40);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> Burger(
+    vb=2,
+    icb=2,
+    bcl=1,
+    ve=worldModel1.n,
+    ice=worldModel1.n,
+    bcr=0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> const[worldModel1.n](y=-0.5);
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator;
+  <A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger.BICx"
+>BICx</A> bICx;
+  <A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger.BAN"
+>BAN</A> bAN;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BC;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(Burger.y, product.u1);
+  <font color="red">connect</font>(Burger.y, product.u2);
+  <font color="red">connect</font>(product.y, derivator.u);
+  <font color="red">connect</font>(derivator.y, product1.u1);
+  <font color="red">connect</font>(const.y, product1.u2);
+  <font color="red">connect</font>(product1.y, Burger.u);
+  <font color="red">connect</font>(bICx.y, Burger.u1);
+  <font color="red">connect</font>(BC.y, Burger.u2);
+  <font color="red">connect</font>(BC.y, Burger.u3);
+  <font color="red">connect</font>(Burger.y, bAN.u);
+<font color="blue">end </font>BurgerEquation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BICx<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Burger.BICxI.png" ALT="PDE.MOL.Examples.Burger.BICx" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Burger.BICx"></A><A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger"
+>PDE.MOL.Examples.Burger</A>.BICx</H2>
+<IMG SRC="PDE.MOL.Examples.Burger.BICxD.png" ALT="PDE.MOL.Examples.Burger.BICx">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition of the inviscid Burger큦 equation
+</p>
+
+<img align=middle src="..\Images\b2.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> BICx
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] = (i-1)/(n-1);
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>BICx;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BAN<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Burger.BANI.png" ALT="PDE.MOL.Examples.Burger.BAN" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Burger.BAN"></A><A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger"
+>PDE.MOL.Examples.Burger</A>.BAN</H2>
+<IMG SRC="PDE.MOL.Examples.Burger.BAND.png" ALT="PDE.MOL.Examples.Burger.BAN">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the analytical solution of the inviscid Burger큦 equation
+</p>
+
+<img align=middle src="..\Images\b5.png">
+</pre>
+<p><b>Release Notes: </b></p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> BAN
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon4"
+>Icons.BlockIcon4</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n];
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    <font color="darkgreen">//y[i] = (i-1)/(n-1) - u[i]*time;</font>
+    y[i] = ((i-1)/(n-1))/(1 + time);
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>BAN;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:27 2007.
+</address></BODY>
+</HTML>

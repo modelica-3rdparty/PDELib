@@ -1,0 +1,248 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.Poisson</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Poisson<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Poisson"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.Poisson</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Poisson equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson.PoissonEquation"
+>PoissonEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Poisson.PICS.png" ALT="PDE.MOL.Examples.Poisson.PIC" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson.PIC"
+>PIC</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Poisson.PANS.png" ALT="PDE.MOL.Examples.Poisson.PAN" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson.PAN"
+>PAN</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE PoissonEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Poisson.PoissonEquation"></A><A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson"
+>PDE.MOL.Examples.Poisson</A>.PoissonEquation</H2>
+<IMG SRC="PDE.MOL.Examples.Poisson.PoissonEquationD.png" ALT="PDE.MOL.Examples.Poisson.PoissonEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Poisson equation</font></h3>
+<p>
+The poisson problem
+</p>
+
+<img align=middle src="..\Images\poisson1.png">
+
+<p>
+is a time independent problem. In order to be handled from the integrator block, this problem is transformed into a
+time dependent problem
+</p>
+
+<img align=middle src="..\Images\poisson2.png">
+
+<p>
+with initial condition
+</p>
+
+<p>
+<img align=middle src="..\Images\poisson3.png">
+</p>
+
+<p>
+The solution of the time dependent problem approaches with time the solution of the time independent problem. <br>
+The analytical solution of this problem is implemented in <b>PAN</b> block.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> PoissonEquation
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(n=20);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> Poisson(
+    vb=2,
+    ve=worldModel1.n - 1,
+    icb=2,
+    ice=worldModel1.n - 1,
+    bcl=1,
+    bcr=1);
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_xx"
+>SpaceDerivative.Derivatives.u_xx</A> u_xx;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n](k1=+1, k2=+1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCR;
+  <A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson.PIC"
+>PIC</A> pIC;
+  <A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson.PAN"
+>PAN</A> pAN;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</A> const[worldModel1.n](k=1:worldModel1.
+         n);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.IntegerExpression"
+>Modelica.Blocks.Sources.IntegerExpression</A> one[worldModel1.n](y=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add1[worldModel1.n](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> pi[worldModel1.n](y=3.14);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> deltax[worldModel1.n](y=
+        worldModel1.n - 1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Sin"
+>Modelica.Blocks.Math.Sin</A> sin[worldModel1.n];
+<font color="blue">equation </font>
+  <font color="red">connect</font>(Poisson.y, u_xx.u);
+  <font color="red">connect</font>(u_xx.y, add.u1);
+  <font color="red">connect</font>(add.y, Poisson.u);
+  <font color="red">connect</font>(BCR.y, Poisson.u3);
+  <font color="red">connect</font>(pIC.y, Poisson.u1);
+  <font color="red">connect</font>(const.y, add1.u1);
+  <font color="red">connect</font>(one.y, add1.u2);
+  <font color="red">connect</font>(add1.y, product.u1);
+  <font color="red">connect</font>(pi.y, product.u2);
+  <font color="red">connect</font>(product.y, division.u1);
+  <font color="red">connect</font>(deltax.y, division.u2);
+  <font color="red">connect</font>(division.y, sin.u);
+  <font color="red">connect</font>(sin.y, add.u2);
+  <font color="red">connect</font>(BCL.y, Poisson.u2);
+<font color="blue">end </font>PoissonEquation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE PIC<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Poisson.PICI.png" ALT="PDE.MOL.Examples.Poisson.PIC" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Poisson.PIC"></A><A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson"
+>PDE.MOL.Examples.Poisson</A>.PIC</H2>
+<IMG SRC="PDE.MOL.Examples.Poisson.PICD.png" ALT="PDE.MOL.Examples.Poisson.PIC">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition for the time dependent poisson equation
+</p>
+
+<p>
+<img align=middle src="..\Images\poisson3.png">
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> PIC
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] =<font color="red"> sin</font>(3*3.14*((i-1)/n));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>PIC;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE PAN<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Poisson.PANI.png" ALT="PDE.MOL.Examples.Poisson.PAN" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Poisson.PAN"></A><A HREF="PDE_MOL_Examples_Poisson.html#PDE.MOL.Examples.Poisson"
+>PDE.MOL.Examples.Poisson</A>.PAN</H2>
+<IMG SRC="PDE.MOL.Examples.Poisson.PICD.png" ALT="PDE.MOL.Examples.Poisson.PAN">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the analytical solution of the poisson equation
+</p>
+
+<img align=middle src="..\Images\poisson4.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> PAN
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon4"
+>Icons.BlockIcon4</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] = (1/(3.14)^2)*<font color="red">sin</font>(3.14*((i-1)/n));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>PAN;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:34 2007.
+</address></BODY>
+</HTML>

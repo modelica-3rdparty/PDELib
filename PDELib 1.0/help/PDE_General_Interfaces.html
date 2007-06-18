@@ -1,0 +1,337 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.General.Interfaces</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Interfaces<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.General.Interfaces"></A><A HREF="PDE_General.html#PDE.General"
+>PDE.General</A>.Interfaces</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains two integrator blocks: IntegratorMOL and IntegratorFVM.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.General.Interfaces.IntegratorMOLS.png" ALT="PDE.General.Interfaces.IntegratorMOL" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_General_Interfaces.html#PDE.General.Interfaces.IntegratorMOL"
+>IntegratorMOL</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.General.Interfaces.IntegratorFVMS.png" ALT="PDE.General.Interfaces.IntegratorFVM" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_General_Interfaces.html#PDE.General.Interfaces.IntegratorFVM"
+>IntegratorFVM</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE IntegratorMOL<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.General.Interfaces.IntegratorMOLI.png" ALT="PDE.General.Interfaces.IntegratorMOL" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.General.Interfaces.IntegratorMOL"></A><A HREF="PDE_General_Interfaces.html#PDE.General.Interfaces"
+>PDE.General.Interfaces</A>.IntegratorMOL</H2>
+<IMG SRC="PDE.General.Interfaces.IntegratorMOLD.png" ALT="PDE.General.Interfaces.IntegratorMOL">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This is a slightly modified version of the MOL integrator block implemented in PDE->MOL->Integrator. The integrator block accepts the equations of the form
+</p>
+<p>
+u_t = R(u, u_xx, ...)
+</p>
+<p>
+where R is a function of u, u_xx, and so on. Once the equation is transformed in this form <br>
+we can construct the right part R and pass it to the input R of the integrator block. <br>
+The unknown varible u which we need for the construction of the right part of the equation is <br>
+provided by the Var output of the integrator block.
+The initial condition is passed to the IC input, whereas the left and right boundary conditions are <br>
+passed to the BCL and BCR inputs respectively.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u3</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> IntegratorMOL
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon1"
+>PDE.Icons.BlockIcon1</A>;
+
+<font color="blue">outer </font>Integer n;
+<font color="blue">outer </font>Integer bcl;
+<font color="blue">outer </font>Integer bcr;
+
+<font color="blue">outer </font>Integer vb;
+<font color="blue">outer </font>Integer ve;
+<font color="blue">outer </font>Integer icb;
+<font color="blue">outer </font>Integer ice;
+
+Real f[n];
+
+<font color="blue">equation </font>
+  y = f;
+
+  <font color="blue">if </font>bcl == 1<font color="blue"> then</font>
+    f[1] = u2;
+  <font color="blue">end if</font>;
+  <font color="blue">if </font>bcr == 1<font color="blue"> then</font>
+    f[n] = u3;
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>vb:ve<font color="blue"> loop</font>
+    <font color="red">der</font>(f[i]) = u[i];
+  <font color="blue">end for</font>;
+
+<font color="blue">initial </font><font color="blue">equation </font>
+
+  <font color="blue">for </font>i<font color="blue"> in </font>icb:ice<font color="blue"> loop</font>
+    f[i] = u1[i];
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u3;
+<font color="blue">equation </font>
+
+<font color="blue">end </font>IntegratorMOL;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE IntegratorFVM<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.General.Interfaces.IntegratorFVMI.png" ALT="PDE.General.Interfaces.IntegratorFVM" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.General.Interfaces.IntegratorFVM"></A><A HREF="PDE_General_Interfaces.html#PDE.General.Interfaces"
+>PDE.General.Interfaces</A>.IntegratorFVM</H2>
+<IMG SRC="PDE.General.Interfaces.IntegratorFVMD.png" ALT="PDE.General.Interfaces.IntegratorFVM">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The IntegratorFVM block is a slightly modified version of the FVMIntegrator (PDE->FiniteVolume->FVMIntegrator).
+It implements the cell average update rule. In one dimension, the finite volume method subdivide the domain into <br>
+cells (intervals) and approximates the integral of the unknown function q over each of these cells at each time step (see figure below). <br>
+The ghost cells are the boundary cells that are introduced to avoid writing special formulas for the boundary cells.
+</p>
+
+<img align=middle src="..\Images\fvmi7.png">
+
+<p>
+Denote the i-th cell by
+</p>
+
+<img align=middle src="..\Images\fvmi.png">
+
+<p>
+Then the approximation to the average of q in the cell C<sub>i</sub> at time t, which we denote with Q<sub>i</sub> is
+</p>
+
+<img align=middle src="..\Images\fvmi1.png">
+
+
+<p>
+The approximation to this average derives from the integral form of the conservation law
+</p>
+
+<img align=middle src="..\Images\fvmi2.png">
+
+<p>
+which states that the average within the cell can only changes due to the fluxes at the boundaries (if we assume that <br>
+no source or sink is present in the cell). <br>
+If we integrate this expression in time from t to t+deltat, we obtain <br>
+</p>
+
+<img align=middle src="..\Images\fvmi3.png">
+
+<p>
+and dividing by deltax we reach the form
+</p>
+
+<img align=middle src="..\Images\fvmi4.png">
+
+<p>
+which give us an explicit time marching algorithm. By using the notation for averages introduced above we can write
+</p>
+
+<img align=middle src="..\Images\fvmi5.png">
+
+<p>
+where
+</p>
+
+<img align=middle src="..\Images\fvmi6.png">
+
+<p>
+approximates the average flux along the interface x<sub>i-1/2</sub>. <br>
+The FVMIntegrator block implements this average update rule. Initial condition of the problem can be passed to the IC input of the block, <br>
+whereas the boundary conditions to the corresponding ghost cells. The number of ghost cells depends on the method we use. In the present <br>
+package, two ghost cells at the left and at the right are enough for every method implemented.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Real</TD><TD>delta_x</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Unknowns</TD></TR>
+<TR><TD>Integer</TD><TD>vb</TD><TD>gcl + 1</TD><TD> The left most unknown</TD></TR>
+<TR><TD>Integer</TD><TD>ve</TD><TD>gcl + n</TD><TD> The right most unknown</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Initial Condition</TD></TR>
+<TR><TD>Integer</TD><TD>icb</TD><TD>gcl + 1</TD><TD> Begin of the initial condition</TD></TR>
+<TR><TD>Integer</TD><TD>ice</TD><TD>gcl + n</TD><TD> End of the initial condition</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Boundary Conditions</TD></TR>
+<TR><TD>Integer</TD><TD>bcl</TD><TD>1</TD><TD> Boundary condition at the left (0: no; 1: yes)</TD></TR>
+<TR><TD>Integer</TD><TD>bcr</TD><TD>1</TD><TD> Boundary condition at the right (0: no; 1: yes)</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>2</TD><TD> Number of ghost cells at the left</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>2</TD><TD> Number of ghost cells at the right</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n + 4]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u3[2]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u4[2]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> IntegratorFVM
+
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon1"
+>Icons.BlockIcon1</A>;
+
+<font color="blue">outer </font>Integer n;
+
+<font color="blue">parameter </font>Integer vb = gcl+1 <font color="darkgreen">&quot;|Unknowns| The left most unknown&quot;</font>;
+<font color="blue">parameter </font>Integer ve = gcl + n <font color="darkgreen">&quot;|Unknowns| The right most unknown&quot;</font>;
+
+<font color="blue">parameter </font>Integer icb = gcl+1 <font color="darkgreen">
+    &quot;|Initial Condition| Begin of the initial condition&quot;</font>;
+<font color="blue">parameter </font>Integer ice = gcl + n <font color="darkgreen">
+    &quot;|Initial Condition| End of the initial condition&quot;</font>;
+
+<font color="blue">parameter </font>Integer bcl = 1 <font color="darkgreen">
+    &quot;|Boundary Conditions| Boundary condition at the left (0: no; 1: yes)&quot;</font>;
+<font color="blue">parameter </font>Integer bcr = 1 <font color="darkgreen">
+    &quot;|Boundary Conditions| Boundary condition at the right (0: no; 1: yes)&quot;</font>;
+
+<font color="blue">parameter </font>Integer gcl = 2 <font color="darkgreen">
+    &quot;|Boundary Conditions| Number of ghost cells at the left&quot;</font>;
+<font color="blue">parameter </font>Integer gcr = 2 <font color="darkgreen">
+    &quot;|Boundary Conditions| Number of ghost cells at the right&quot;</font>;
+
+<font color="blue">parameter </font>Real delta_x = 1/n;
+<font color="darkgreen">//parameter Real delta_t = 0.1;</font>
+
+Real q[n+gcl+gcr];
+
+<font color="blue">equation </font>
+  y = q;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>1:gcl<font color="blue"> loop</font>
+     q[i]= u3[i];
+  <font color="blue">end for</font>;
+
+  <font color="blue">if </font>bcl == 1<font color="blue"> then</font>
+     q[gcl+1] = q[gcl];
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>1:gcr<font color="blue"> loop</font>
+     q[gcl+n+i] = u4[i];
+  <font color="blue">end for</font>;
+
+  <font color="blue">if </font>bcr == 1<font color="blue"> then</font>
+     q[gcl+n] = q[gcl+n+1];
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>vb:ve<font color="blue"> loop</font>
+    <font color="red">der</font>(q[i]) = -(1/delta_x)*(u[i-gcl+1]-u[i-gcl]);
+  <font color="blue">end for</font>;
+
+<font color="blue">initial </font><font color="blue">equation </font>
+
+  <font color="blue">for </font>i<font color="blue"> in </font>icb:ice<font color="blue"> loop</font>
+    q[i] =  u2[i-gcl];
+  <font color="blue">end for</font>;
+
+<font color="darkgreen">// equation </font>
+<font color="darkgreen">//   y = q;</font>
+<font color="darkgreen">//   </font>
+<font color="darkgreen">//   if bcl == 1 then</font>
+<font color="darkgreen">//     for i in 1:gcl loop</font>
+<font color="darkgreen">//       q[i]= u3[i];</font>
+<font color="darkgreen">//     end for;</font>
+<font color="darkgreen">//   end if;</font>
+<font color="darkgreen">//   </font>
+<font color="darkgreen">//   if bcr == 1 then</font>
+<font color="darkgreen">//     for i in 1:gcr loop</font>
+<font color="darkgreen">//       q[gcl+n+i] = u4[i];</font>
+<font color="darkgreen">//     end for;</font>
+<font color="darkgreen">//   end if;</font>
+<font color="darkgreen">//   </font>
+<font color="darkgreen">//   for i in vb:ve loop</font>
+<font color="darkgreen">//     der(q[i]) = -(1/delta_x)*(u[i-gcl+1]-u[i-gcl]);</font>
+<font color="darkgreen">//   end for;</font>
+<font color="darkgreen">//   </font>
+<font color="darkgreen">// initial equation </font>
+<font color="darkgreen">//   </font>
+<font color="darkgreen">//   for i in icb:ice loop</font>
+<font color="darkgreen">//     q[i] =  u2[i-gcl];</font>
+<font color="darkgreen">//   end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n + 4];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u3[2];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u4[2];
+<font color="blue">end </font>IntegratorFVM;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:08 2007.
+</address></BODY>
+</HTML>

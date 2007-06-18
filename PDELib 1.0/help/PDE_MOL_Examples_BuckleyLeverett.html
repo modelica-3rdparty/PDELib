@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.BuckleyLeverett</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BuckleyLeverett<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.BuckleyLeverett"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.BuckleyLeverett</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Buckley-Leverett equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_BuckleyLeverett.html#PDE.MOL.Examples.BuckleyLeverett.BuckleyLeverettEquation"
+>BuckleyLeverettEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BuckleyLeverettEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.BuckleyLeverett.BuckleyLeverettEquation"></A><A HREF="PDE_MOL_Examples_BuckleyLeverett.html#PDE.MOL.Examples.BuckleyLeverett"
+>PDE.MOL.Examples.BuckleyLeverett</A>.BuckleyLeverettEquation</H2>
+<IMG SRC="PDE.MOL.Examples.BuckleyLeverett.BuckleyLeverettEquationD.png" ALT="PDE.MOL.Examples.BuckleyLeverett.BuckleyLeverettEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Buckley-Leverett equation</font></h3>
+<p>
+Implements the Buckley-Leverett equation
+</p>
+
+<img align=middle src="..\Images\bl1.png">
+
+<p>
+The initial condition is
+</p>
+
+<img align=middle src="..\Images\bl2.png">
+
+<p>
+and boundary conditions are
+</p>
+
+<p>
+<img align=middle src="..\Images\bl3.png">
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> BuckleyLeverettEquation
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(qss=2, n=10);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> BuckleyLeverett(
+    vb=2,
+    ve=worldModel1.n - 1,
+    icb=2,
+    ice=worldModel1.n - 1,
+    bcl=1,
+    bcr=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> const[worldModel1.n](y=4.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> one[worldModel1.n](y=1.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add1[worldModel1.n];
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> IC[worldModel1.n](y=1.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCR;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(BuckleyLeverett.y, product.u1);
+  <font color="red">connect</font>(BuckleyLeverett.y, product.u2);
+  <font color="red">connect</font>(product.y, product1.u1);
+  <font color="red">connect</font>(const.y, product1.u2);
+  <font color="red">connect</font>(one.y, add.u1);
+  <font color="red">connect</font>(BuckleyLeverett.y, add.u2);
+  <font color="red">connect</font>(add.y, product2.u1);
+  <font color="red">connect</font>(add.y, product2.u2);
+  <font color="red">connect</font>(product2.y, add1.u2);
+  <font color="red">connect</font>(product1.y, add1.u1);
+  <font color="red">connect</font>(add1.y, division.u2);
+  <font color="red">connect</font>(product1.y, division.u1);
+  <font color="red">connect</font>(division.y, derivator.u);
+  <font color="red">connect</font>(derivator.y, gain.u);
+  <font color="red">connect</font>(gain.y, BuckleyLeverett.u);
+  <font color="red">connect</font>(BCR.y, BuckleyLeverett.u3);
+  <font color="red">connect</font>(IC.y, BuckleyLeverett.u1);
+  <font color="red">connect</font>(BCL.y, BuckleyLeverett.u2);
+<font color="blue">end </font>BuckleyLeverettEquation;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:28 2007.
+</address></BODY>
+</HTML>

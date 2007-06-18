@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FluxLimiterSolver<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver"></A><A HREF="PDE_FiniteVolume_FluxLimiter.html#PDE.FiniteVolume.FluxLimiter"
+>PDE.FiniteVolume.FluxLimiter</A>.FluxLimiterSolver</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains FluxLimiterSolver block that offers linear and high resolution methods for solving linear constant-coefficient hyperbolic system of equations.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolverS.png" ALT="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"
+>FluxLimiterSolver</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FluxLimiterSolver<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolverI.png" ALT="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"></A><A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver"
+>PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver</A>.FluxLimiterSolver</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolverD.png" ALT="PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The Flux Limiter Solver contains all the linear and high resolution methods which can be selected through the parameter variable <b>method</b> <br>
+</p>
+
+<p>
+method = 1:    <b>Upwind</b> <br>
+method = 2:    <b>Lax-Wendroff</b> <br>
+method = 3:    <b>Beam Warming</b> <br>
+method = 4:    <b>Fromm</b> <br>
+method = 5:    <b>van Leer</b> <br>
+</p>
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>method</TD><TD>worldModel1.fls</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> FluxLimiterSolver
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+  <font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <font color="blue">parameter </font>Integer method = worldModel1.fls;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer p = 1;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.Upwind"
+>LinearMethods.Upwind</A> upwind <font color="blue">if </font>method == 1;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.LaxWendroff"
+>LinearMethods.LaxWendroff</A> laxWendroff <font color="blue">if </font>method == 2;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.BeamWarming"
+>LinearMethods.BeamWarming</A> beamWarming <font color="blue">if </font>method == 3;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.Fromm"
+>LinearMethods.Fromm</A> fromm <font color="blue">if </font>method == 4;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_HighResolutionMethods.html#PDE.FiniteVolume.FluxLimiter.HighResolutionMethods.vanLeer"
+>PDE.FiniteVolume.FluxLimiter.HighResolutionMethods.vanLeer</A> vanLeerNew <font color="blue">if </font>
+                                                 method == 5;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u, upwind.u);
+  <font color="red">connect</font>(u, laxWendroff.u);
+  <font color="red">connect</font>(u, beamWarming.u);
+  <font color="red">connect</font>(u, fromm.u);
+  <font color="red">connect</font>(u, vanLeerNew.u);
+  <font color="red">connect</font>(upwind.y, y);
+  <font color="red">connect</font>(laxWendroff.y, y);
+  <font color="red">connect</font>(beamWarming.y, y);
+  <font color="red">connect</font>(fromm.y, y);
+  <font color="red">connect</font>(vanLeerNew.y, y);
+<font color="blue">end </font>FluxLimiterSolver;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:02 2007.
+</address></BODY>
+</HTML>

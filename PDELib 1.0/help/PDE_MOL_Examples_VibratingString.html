@@ -1,0 +1,247 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.VibratingString</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE VibratingString<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.VibratingString"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.VibratingString</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains vibrating string equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString.VibratingString"
+>VibratingString</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.VibratingString.VSICS.png" ALT="PDE.MOL.Examples.VibratingString.VSIC" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString.VSIC"
+>VSIC</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.VibratingString.VibratingStringAnalyticalS.png" ALT="PDE.MOL.Examples.VibratingString.VibratingStringAnalytical" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString.VibratingStringAnalytical"
+>VibratingStringAnalytical</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE VibratingString<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.VibratingString.VibratingString"></A><A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString"
+>PDE.MOL.Examples.VibratingString</A>.VibratingString</H2>
+<IMG SRC="PDE.MOL.Examples.VibratingString.VibratingStringD.png" ALT="PDE.MOL.Examples.VibratingString.VibratingString">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Vibrating string equation</font></h3>
+<p>
+Implements the vibrating string equation. The finite vibrating string of length L (L = 1 in this problem) is
+described by the wave equation together with special boundary and initial conditions. The complete problem is
+</p>
+
+<img align=middle src="..\Images\vs.png">
+
+<p>
+where c is a constant value.
+</p>
+
+
+<p>
+The analytical solution of this problem is implemented in <b>VibratingStringAnalytical</b> block.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> VibratingString
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1(qss=1, n=40);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCv;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICv[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> Friction[worldModel1.n](y=0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> alpha2[worldModel1.n](y=1.0);
+  <A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString.VSIC"
+>PDE.MOL.Examples.VibratingString.VSIC</A> vSIC;
+  <A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString.VibratingStringAnalytical"
+>PDE.MOL.Examples.VibratingString.VibratingStringAnalytical</A>
+    vibratingStringAnalytical;
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> u(
+    vb=2,
+    ve=worldModel1.n - 1,
+    icb=2,
+    ice=worldModel1.n - 1,
+    bcl=1,
+    bcr=1);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> v(
+    vb=2,
+    ve=worldModel1.n - 1,
+    icb=2,
+    ice=worldModel1.n - 1,
+    bcl=1,
+    bcr=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCu;
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_xx"
+>PDE.MOL.SpaceDerivative.Derivatives.u_xx</A> u_xx;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(product.y, add.u2);
+  <font color="red">connect</font>(Friction.y, product.u1);
+  <font color="red">connect</font>(alpha2.y, product1.u1);
+  <font color="red">connect</font>(product1.y, add.u1);
+  <font color="red">connect</font>(BCv.y, v.u3);
+  <font color="red">connect</font>(BCv.y, v.u2);
+  <font color="red">connect</font>(ICv.y, v.u1);
+  <font color="red">connect</font>(BCu.y, u.u3);
+  <font color="red">connect</font>(BCu.y, u.u2);
+  <font color="red">connect</font>(vSIC.y, u.u1);
+  <font color="red">connect</font>(v.y, u.u);
+  <font color="red">connect</font>(add.y, v.u);
+  <font color="red">connect</font>(v.y, product.u2);
+  <font color="red">connect</font>(u_xx.y, product1.u2);
+  <font color="red">connect</font>(u.y, u_xx.u);
+<font color="blue">end </font>VibratingString;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE VSIC<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.VibratingString.VSICI.png" ALT="PDE.MOL.Examples.VibratingString.VSIC" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.VibratingString.VSIC"></A><A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString"
+>PDE.MOL.Examples.VibratingString</A>.VSIC</H2>
+<IMG SRC="PDE.MOL.Examples.VibratingString.VSICD.png" ALT="PDE.MOL.Examples.VibratingString.VSIC">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition
+</p>
+
+<img align=middle src="..\Images\vs2.png">
+
+<p>
+for the <b>u</b> block of vibrating string equation.
+</p>
+
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> VSIC
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">protected </font>
+          Real pi = 3.14;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] =<font color="red"> sin</font>(pi*(i-1)/(n-1)) + 0.5*<font color="red">sin</font>(3*pi*(i-1)/(n-1));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>VSIC;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE VibratingStringAnalytical<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.VibratingString.VibratingStringAnalyticalI.png" ALT="PDE.MOL.Examples.VibratingString.VibratingStringAnalytical" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.VibratingString.VibratingStringAnalytical"></A><A HREF="PDE_MOL_Examples_VibratingString.html#PDE.MOL.Examples.VibratingString"
+>PDE.MOL.Examples.VibratingString</A>.VibratingStringAnalytical</H2>
+<IMG SRC="PDE.MOL.Examples.VibratingString.VSICD.png" ALT="PDE.MOL.Examples.VibratingString.VibratingStringAnalytical">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the analytical solution of the vibrating string equation
+</p>
+
+<img align=middle src="..\Images\vs1.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>alpha</TD><TD>1.0</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> VibratingStringAnalytical
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon4"
+>Icons.BlockIcon4</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Real alpha = 1.0;
+
+<font color="blue">protected </font>
+          Real pi = 3.14;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] = (<font color="red">sin</font>(pi*(i-1)/(n-1)))*(<font color="red">cos</font>(pi*alpha*time)) + 0.5*(<font color="red">sin</font>(3*pi*(i-1)/(n-1)))*(<font color="red">cos</font>(3*pi*alpha*time));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>VibratingStringAnalytical;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:17 2007.
+</address></BODY>
+</HTML>

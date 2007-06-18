@@ -1,0 +1,472 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.EulerSystem</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE EulerSystem<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.EulerSystem"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.EulerSystem</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Euler equations solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem.ShockWaveEquation"
+>ShockWaveEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.EulerSystem.FrictionS.png" ALT="PDE.MOL.Examples.EulerSystem.Friction" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem.Friction"
+>Friction</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.EulerSystem.FrictionS.png" ALT="PDE.MOL.Examples.EulerSystem.Viscosity" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem.Viscosity"
+>Viscosity</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.EulerSystem.aS.png" ALT="PDE.MOL.Examples.EulerSystem.a" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem.a"
+>a</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE ShockWaveEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.EulerSystem.ShockWaveEquation"></A><A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem"
+>PDE.MOL.Examples.EulerSystem</A>.ShockWaveEquation</H2>
+<IMG SRC="PDE.MOL.Examples.EulerSystem.ShockWaveEquationD.png" ALT="PDE.MOL.Examples.EulerSystem.ShockWaveEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Euler equations</font></h3>
+<p>
+Implements the Euler system of equations
+</p>
+<p>
+<img align=middle src="..\Images\sw1.png">
+</p>
+
+<p>
+where
+</p>
+
+<img align=middle src="..\Images\sw3.png">
+
+<p>
+The initial conditions are
+</p>
+
+<img align=middle src="..\Images\sw4.png">
+<p>
+where <i>rho<sub>i</sub></i> is determined by the equation of state for ideal gases:
+</p>
+
+<img align=middle src="..\Images\sw5.png">
+
+<p>
+where T = 300K, R = 8.314 J/K*mole and M<sub>air</sub> = 28.96 g/mole
+</p>
+
+
+<p>
+The boundary conditions are
+</p>
+
+<img align=middle src="..\Images\sw6.png">
+
+
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> ShockWaveEquation
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(                          n=10, qss=1);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>PDE.MOL.Integrator.UniversalIntegrator</A> Density(
+    ve=worldModel1.n - 1,
+    ice=worldModel1.n - 1,
+    bcr=1);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>PDE.MOL.Integrator.UniversalIntegrator</A> Velocity(
+    vb=2,
+    icb=2,
+    bcl=1);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>PDE.MOL.Integrator.UniversalIntegrator</A> Pressure(
+    ve=worldModel1.n - 1,
+    ice=worldModel1.n - 1,
+    bcr=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain1[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n];
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator(
+                                              bcl=0, bcr=-1);
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator1(
+                                               bcl=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> realExpr[worldModel1.n](y=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product3[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add1[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain2[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain3[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product4[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product5[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add2[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain4[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain5[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product6[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> gamma[worldModel1.n](y=1.4);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICdensity[worldModel1.n](y=1.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICvelocity[worldModel1.n](y=0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICpressure[worldModel1.n](y=1.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCR(y=0.125);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL(y=0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCRp(y=0.1);
+  <A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem.a"
+>a</A> a1;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(Density.y, derivator.u);
+  <font color="red">connect</font>(derivator.y, product1.u1);
+  <font color="red">connect</font>(Velocity.y, derivator1.u);
+  <font color="red">connect</font>(Density.y, product.u1);
+  <font color="red">connect</font>(Velocity.y, product1.u2);
+  <font color="red">connect</font>(derivator1.y, product.u2);
+  <font color="red">connect</font>(product1.y, gain.u);
+  <font color="red">connect</font>(product.y, gain1.u);
+  <font color="red">connect</font>(gain.y, add.u1);
+  <font color="red">connect</font>(gain1.y, add.u2);
+  <font color="red">connect</font>(add.y, Density.u);
+  <font color="red">connect</font>(realExpr.y, division.u1);
+  <font color="red">connect</font>(division.y, product3.u1);
+  <font color="red">connect</font>(Velocity.y, product2.u2);
+  <font color="red">connect</font>(derivator1.y, product2.u1);
+  <font color="red">connect</font>(product3.y, gain3.u);
+  <font color="red">connect</font>(product2.y, gain2.u);
+  <font color="red">connect</font>(gain2.y, add1.u1);
+  <font color="red">connect</font>(gain3.y, add1.u2);
+  <font color="red">connect</font>(product4.y, gain4.u);
+  <font color="red">connect</font>(derivator1.y, product6.u1);
+  <font color="red">connect</font>(product5.y, product6.u2);
+  <font color="red">connect</font>(gamma.y, product5.u2);
+  <font color="red">connect</font>(Pressure.y, product5.u1);
+  <font color="red">connect</font>(product6.y, gain5.u);
+  <font color="red">connect</font>(gain4.y, add2.u1);
+  <font color="red">connect</font>(gain5.y, add2.u2);
+  <font color="red">connect</font>(BCR.y, Density.u3);
+  <font color="red">connect</font>(BCL.y, Velocity.u2);
+  <font color="red">connect</font>(BCRp.y, Pressure.u3);
+  <font color="red">connect</font>(Density.y, division.u2);
+  <font color="red">connect</font>(Velocity.y, product4.u2);
+  <font color="red">connect</font>(add2.y, Pressure.u);
+  <font color="red">connect</font>(ICpressure.y, Pressure.u1);
+  <font color="red">connect</font>(add1.y, Velocity.u);
+  <font color="red">connect</font>(a1.y, product3.u2);
+  <font color="red">connect</font>(a1.y, product4.u1);
+  <font color="red">connect</font>(Density.y, a1.u);
+  <font color="red">connect</font>(Velocity.y, a1.u1);
+  <font color="red">connect</font>(Pressure.y, a1.u2);
+  <font color="red">connect</font>(ICdensity.y, Density.u1);
+  <font color="red">connect</font>(ICvelocity.y, Velocity.u1);
+<font color="blue">end </font>ShockWaveEquation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Friction<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.EulerSystem.FrictionI.png" ALT="PDE.MOL.Examples.EulerSystem.Friction" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.EulerSystem.Friction"></A><A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem"
+>PDE.MOL.Examples.EulerSystem</A>.Friction</H2>
+<IMG SRC="PDE.MOL.Examples.EulerSystem.FrictionD.png" ALT="PDE.MOL.Examples.EulerSystem.Friction">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the frictional resistance of the Euler system of equations
+</p>
+<p>
+<img align=middle src="..\Images\fb.png">
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Real</TD><TD>alpha</TD><TD>0.1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Friction
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+
+<font color="blue">outer </font>Integer n;
+<font color="blue">parameter </font>Real alpha = 0.1;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Abs"
+>Modelica.Blocks.Math.Abs</A> abs1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> param_alpha[n](y=0.1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> delta_x[n](y=1/(
+        n - 1));
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u, product.u1);
+  <font color="red">connect</font>(u1, product.u2);
+  <font color="red">connect</font>(u1, abs1.u);
+  <font color="red">connect</font>(product.y, product1.u1);
+  <font color="red">connect</font>(abs1.y, product1.u2);
+  <font color="red">connect</font>(product1.y, product2.u2);
+  <font color="red">connect</font>(param_alpha.y, product2.u1);
+  <font color="red">connect</font>(product2.y, division.u1);
+  <font color="red">connect</font>(delta_x.y, division.u2);
+  <font color="red">connect</font>(division.y, y);
+<font color="blue">end </font>Friction;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Viscosity<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.EulerSystem.ViscosityI.png" ALT="PDE.MOL.Examples.EulerSystem.Viscosity" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.EulerSystem.Viscosity"></A><A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem"
+>PDE.MOL.Examples.EulerSystem</A>.Viscosity</H2>
+<IMG SRC="PDE.MOL.Examples.EulerSystem.ViscosityD.png" ALT="PDE.MOL.Examples.EulerSystem.Viscosity">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the pseudo viscous pressure of the Euler system of equations
+</p>
+<p>
+<img align=middle src="..\Images\vb.png">
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Viscosity
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+
+  <font color="blue">outer </font>Integer n;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Less"
+>Modelica.Blocks.Logical.Less</A> less[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> realExpression[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Switch"
+>Modelica.Blocks.Logical.Switch</A> switch1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> realExpression1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> param_beta[n](y=0.1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> delta_x[n](y=1/(
+        n - 1));
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product3[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product4[n];
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u1, less.u1);
+  <font color="red">connect</font>(realExpression.y, less.u2);
+  <font color="red">connect</font>(less.y, switch1.u2);
+  <font color="red">connect</font>(realExpression1.y, switch1.u3);
+  <font color="red">connect</font>(u, product.u1);
+  <font color="red">connect</font>(u1, product1.u1);
+  <font color="red">connect</font>(u1, product1.u2);
+  <font color="red">connect</font>(product1.y, product.u2);
+  <font color="red">connect</font>(delta_x.y, product2.u1);
+  <font color="red">connect</font>(delta_x.y, product2.u2);
+  <font color="red">connect</font>(param_beta.y, product3.u1);
+  <font color="red">connect</font>(product2.y, product3.u2);
+  <font color="red">connect</font>(product3.y, product4.u1);
+  <font color="red">connect</font>(product.y, product4.u2);
+  <font color="red">connect</font>(product4.y, switch1.u1);
+  <font color="red">connect</font>(switch1.y, y);
+<font color="blue">end </font>Viscosity;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE a<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.EulerSystem.aI.png" ALT="PDE.MOL.Examples.EulerSystem.a" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.EulerSystem.a"></A><A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem"
+>PDE.MOL.Examples.EulerSystem</A>.a</H2>
+<IMG SRC="PDE.MOL.Examples.EulerSystem.aD.png" ALT="PDE.MOL.Examples.EulerSystem.a">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements
+</p>
+<p>
+<img align=middle src="..\Images\ab.png">
+</p>
+<p>
+in the Euler system of equations
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>method</TD><TD>worldModel1.qss</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> a
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+  <font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator1;
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator2;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_1[worldModel1.n];
+  <font color="blue">parameter </font>Integer method = worldModel1.qss;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer n = worldModel1.n;
+  <A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem.Friction"
+>Friction</A> friction;
+  <A HREF="PDE_MOL_Examples_EulerSystem.html#PDE.MOL.Examples.EulerSystem.Viscosity"
+>Viscosity</A> viscosity;
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator3;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u2, derivator2.u);
+  <font color="red">connect</font>(derivator1.y, add3_1.u2);
+  <font color="red">connect</font>(add3_1.y, y);
+  <font color="red">connect</font>(derivator2.y, add3_1.u3);
+  <font color="red">connect</font>(u, friction.u);
+  <font color="red">connect</font>(u1, friction.u1);
+  <font color="red">connect</font>(viscosity.y, derivator1.u);
+  <font color="red">connect</font>(u, viscosity.u);
+  <font color="red">connect</font>(u1, derivator3.u);
+  <font color="red">connect</font>(derivator3.y, viscosity.u1);
+  <font color="red">connect</font>(friction.y, add3_1.u1);
+<font color="blue">end </font>a;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:25 2007.
+</address></BODY>
+</HTML>

@@ -1,0 +1,361 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.LDLR.c</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE c<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.LDLR.c"></A><A HREF="PDE_FiniteVolume_LDLR.html#PDE.FiniteVolume.LDLR"
+>PDE.FiniteVolume.LDLR</A>.c</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the constant values c<sub>1</sub>, c<sub>2</sub>, c<sub>3</sub> and c<sub>4</sub> needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log3.png">
+
+<p>
+where <i>tol = 0.1h^q</i>, <i>q = 1.4</i> typically.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.c.C1S.png" ALT="PDE.FiniteVolume.LDLR.c.C1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c.C1"
+>C1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.c.C2S.png" ALT="PDE.FiniteVolume.LDLR.c.C2" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c.C2"
+>C2</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.c.C3S.png" ALT="PDE.FiniteVolume.LDLR.c.C3" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c.C3"
+>C3</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.c.C4S.png" ALT="PDE.FiniteVolume.LDLR.c.C4" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c.C4"
+>C4</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE C1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.c.C1I.png" ALT="PDE.FiniteVolume.LDLR.c.C1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.c.C1"></A><A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c"
+>PDE.FiniteVolume.LDLR.c</A>.C1</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.c.C1D.png" ALT="PDE.FiniteVolume.LDLR.c.C1">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the constant value c<sub>1</sub> needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log9.png">
+
+<p>
+where <i>tol = 0.1h^q</i>, <i>q = 1.4</i> typically.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>q</TD><TD>1.4</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>tol</TD><TD>0.1*(deltax^q)</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> C1
+
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="darkgreen">// parameter Integer gcl = worldModel1.gcl;</font>
+<font color="darkgreen">// parameter Integer gcr = worldModel1.gcr;</font>
+<font color="blue">parameter </font>Real deltax = 1/n;
+
+<font color="blue">parameter </font>Real q = 1.4;
+<font color="blue">parameter </font>Real tol = 0.1*(deltax^q);
+
+<font color="blue">protected </font>
+Real u_[worldModel1.n + 1];
+Real u1_[worldModel1.n + 1];
+
+<font color="blue">equation </font>
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  u_[i] =<font color="red"> noEvent</font>(<font color="blue">if </font>u[i] &lt; 0<font color="blue"> then </font>-u[i]<font color="blue"> else </font>u[i]);
+  u1_[i] =<font color="red"> noEvent</font>(<font color="blue">if </font>u1[i] &lt; 0<font color="blue"> then </font>-u1[i]<font color="blue"> else </font>u1[i]);
+
+ y[i] = (1-tol)*(1 + tol - ((2*((u_[i])^q)*((u1_[i])^q) + tol)/((u_[i])^(2*q) + (u1_[i])^(2*q) + tol)));
+
+ <font color="darkgreen">//y[i] = (1-tol)*(1 + tol - ((2*((sqrt(u[i]*u[i]))^q)*((sqrt(u1[i]*u1[i]))^q) + tol)/((sqrt(u[i]*u[i]))^(2*q) + (sqrt(u1[i]*u1[i]))^(2*q) + tol)));</font>
+
+<font color="darkgreen">// y[i] = (1-tol)*(1 + tol - ((2*((abs(u[i]))^q)*((abs(u1[i]))^q) + tol)/((abs(u[i]))^(2*q) + (abs(u1[i]))^(2*q) + tol)));</font>
+<font color="darkgreen">//y[i] = (1-tol)*(1 + tol - ((2*(noevent((abs(u[i]))^q))*(noevent((abs(u1[i]))^q)) + tol)/((noevent((abs(u[i]))^(2*q)) + noevent((abs(u1[i]))^(2*q)) + tol))));</font>
+<font color="darkgreen">//y[i] = (1-tol)*(1 + tol - (2*(u[i]^(1.4))*(u1[i]^(1.4)) + tol)/(u[i]^(2.8) + u1[i]^(2.8) + tol));</font>
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// equation </font>
+
+<font color="darkgreen">// for i in 1:n+1 loop</font>
+<font color="darkgreen">//   y[i] = (1-tol)*(1 + tol - ((2*((abs(u[i]))^q)*((abs(u1[i]))^q) + tol)/((abs(u[i]))^(2*q) + (abs(u1[i]))^(2*q) + tol)));</font>
+<font color="darkgreen">//   //y[i] = (1-tol)*(1 + tol - ((2*(noevent((abs(u[i]))^q))*(noevent((abs(u1[i]))^q)) + tol)/((noevent((abs(u[i]))^(2*q)) + noevent((abs(u1[i]))^(2*q)) + tol))));</font>
+<font color="darkgreen">//   //y[i] = (1-tol)*(1 + tol - (2*(u[i]^(1.4))*(u1[i]^(1.4)) + tol)/(u[i]^(2.8) + u1[i]^(2.8) + tol));</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>C1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE C2<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.c.C2I.png" ALT="PDE.FiniteVolume.LDLR.c.C2" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.c.C2"></A><A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c"
+>PDE.FiniteVolume.LDLR.c</A>.C2</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.c.C2D.png" ALT="PDE.FiniteVolume.LDLR.c.C2">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the constant value c<sub>2</sub> needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log10.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> C2
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="darkgreen">// parameter Integer gcl = worldModel1.gcl;</font>
+<font color="darkgreen">// parameter Integer gcr = worldModel1.gcr;</font>
+
+<font color="blue">equation </font>
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = u[i]/(u[i]-1);
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+1:gcl+n loop</font>
+<font color="darkgreen">//   y[i] = u[i]/(u[i]-1);</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>C2;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE C3<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.c.C3I.png" ALT="PDE.FiniteVolume.LDLR.c.C3" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.c.C3"></A><A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c"
+>PDE.FiniteVolume.LDLR.c</A>.C3</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.c.C3D.png" ALT="PDE.FiniteVolume.LDLR.c.C3">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the constant value c<sub>3</sub> needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log11.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u3[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> C3
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="darkgreen">// parameter Integer gcl = worldModel1.gcl;</font>
+<font color="darkgreen">// parameter Integer gcr = worldModel1.gcr;</font>
+
+<font color="blue">equation </font>
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = ((u2[i] - 1)*(u1[i]*(1 - u3[i]) - u[i]))/(u3[i] - u2[i]);
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+1:gcl+n loop</font>
+<font color="darkgreen">//   y[i] = (u2[i] - 1)*(u1[i]*(1 - u3[i]) - u[i])/(u3[i] - u2[i]);</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>C3;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE C4<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.c.C4I.png" ALT="PDE.FiniteVolume.LDLR.c.C4" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.c.C4"></A><A HREF="PDE_FiniteVolume_LDLR_c.html#PDE.FiniteVolume.LDLR.c"
+>PDE.FiniteVolume.LDLR.c</A>.C4</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.c.C4D.png" ALT="PDE.FiniteVolume.LDLR.c.C4">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the constant value c<sub>4</sub> needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log12.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> C4
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="darkgreen">// parameter Integer gcl = worldModel1.gcl;</font>
+<font color="darkgreen">// parameter Integer gcr = worldModel1.gcr;</font>
+
+<font color="blue">equation </font>
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = u[i] - u1[i];
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+1:gcl+n loop</font>
+<font color="darkgreen">//   y[i] = u[i] - u1[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>C4;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:40 2007.
+</address></BODY>
+</HTML>

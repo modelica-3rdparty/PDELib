@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.LDLR.u</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.LDLR.u"></A><A HREF="PDE_FiniteVolume_LDLR.html#PDE.FiniteVolume.LDLR"
+>PDE.FiniteVolume.LDLR</A>.u</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the reconstruction of the values u<sup>-</sup> and u<sup>+</sup> at the interface x<sub>i+1/2</sub>
+</p>
+
+<img align=middle src="..\Images\log1.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.u.u_minusS.png" ALT="PDE.FiniteVolume.LDLR.u.u_minus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>u_minus</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.u.u_minusS.png" ALT="PDE.FiniteVolume.LDLR.u.u_plus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>u_plus</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_minus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.u.u_minusI.png" ALT="PDE.FiniteVolume.LDLR.u.u_minus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.u.u_minus"></A><A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u"
+>PDE.FiniteVolume.LDLR.u</A>.u_minus</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.u.u_minusD.png" ALT="PDE.FiniteVolume.LDLR.u.u_minus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the reconstruction of the value u<sup>-</sup> at the interface x<sub>i+1/2</sub>
+</p>
+
+<img align=middle src="..\Images\log18.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_minus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+<font color="blue">equation </font>
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = u[i+gcl-1] + u1[i];
+<font color="blue">end for</font>;
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>u_minus;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_plus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.u.u_plusI.png" ALT="PDE.FiniteVolume.LDLR.u.u_plus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.u.u_plus"></A><A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u"
+>PDE.FiniteVolume.LDLR.u</A>.u_plus</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.u.u_minusD.png" ALT="PDE.FiniteVolume.LDLR.u.u_plus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the reconstruction of the value u<sup>+</sup> at the interface x<sub>i+1/2</sub>
+</p>
+
+<img align=middle src="..\Images\log19.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_plus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = u[i+gcl] + u1[i];
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+1:gcl+n loop</font>
+<font color="darkgreen">//   y[i] = u[i+1] + u1[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>u_plus;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:47 2007.
+</address></BODY>
+</HTML>

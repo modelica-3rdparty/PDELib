@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Fluxes.LaxWendroffFlux</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LaxWendroffFlux<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Fluxes.LaxWendroffFlux"></A><A HREF="PDE_FiniteVolume_Fluxes.html#PDE.FiniteVolume.Fluxes"
+>PDE.FiniteVolume.Fluxes</A>.LaxWendroffFlux</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains the LaxWendroffFlux block for the computation of fluxes at the cell boundaries.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroffS.png" ALT="PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroff" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_Fluxes_LaxWendroffFlux.html#PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroff"
+>LaxWendroff</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LaxWendroff<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroffI.png" ALT="PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroff" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroff"></A><A HREF="PDE_FiniteVolume_Fluxes_LaxWendroffFlux.html#PDE.FiniteVolume.Fluxes.LaxWendroffFlux"
+>PDE.FiniteVolume.Fluxes.LaxWendroffFlux</A>.LaxWendroff</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroffD.png" ALT="PDE.FiniteVolume.Fluxes.LaxWendroffFlux.LaxWendroff">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the Lax-Wendroff flux. By using this flux, the average update rule becomes:
+</p>
+
+<img align=middle src="..\Images\lw.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltat</TD><TD>worldModel1.deltat</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcr + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> LaxWendroff
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Real deltax = 1/n;
+<font color="blue">parameter </font>Real deltat = worldModel1.deltat;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+    y[i] = 0.5*u1*(u[gcl+i] + u[gcl+i-1]) - 0.5*(u1^2)*(deltat/deltax)*(u[gcl+i] - u[gcl+i-1]);
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcr
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>LaxWendroff;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:35 2007.
+</address></BODY>
+</HTML>

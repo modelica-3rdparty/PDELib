@@ -1,0 +1,385 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Acoustic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples.html#PDE.FiniteVolume.FluxLimiter.Examples"
+>PDE.FiniteVolume.FluxLimiter.Examples</A>.Acoustic</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains acoustics example solved with the Finite Volume Methods by using flux limiters.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.Acoustics"
+>Acoustics</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacousticsS.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacoustics" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacoustics"
+>ICacoustics</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacousticsS.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacoustics" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacoustics"
+>BCLacoustics</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacousticsS.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacoustics" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacoustics"
+>BCRacoustics</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Acoustics<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.Acoustics"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic"
+>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic</A>.Acoustics</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.AcousticsD.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.Acoustics">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Acoustics equations</font></h3>
+<p>
+The Acoustics example is a system of three equations
+</p>
+
+<img align=middle src="..\Images\ac1.png">
+
+<p>
+where p is the gas pressure, v its velocity, phi the concentration of the contaminant and K<sub>0</sub>, rho<sub>0</sub>, v<sub>0</sub> are constant values.
+The eigenvalues
+</p>
+
+<img align=middle src="..\Images\ac2.png">
+<img align=middle src="..\Images\ac3.png">
+<img align=middle src="..\Images\ac4.png">
+
+<p>
+where c<sub>0</sub> is a constant value, and the eigenvector matrix
+</p>
+
+<img align=middle src="..\Images\ac5.png">
+
+<p>
+are given explicitly in this example.
+In general, the user must compute the eigenvector matrix and eigenvalues by using other Modelica packages.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Acoustics
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Riemann.html#PDE.FiniteVolume.FluxLimiter.Riemann.Riemann"
+>Riemann.Riemann</A> riemann;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Alpha.html#PDE.FiniteVolume.FluxLimiter.Alpha.Alpha"
+>Alpha.Alpha</A> alpha;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Wave.html#PDE.FiniteVolume.FluxLimiter.Wave.WaveP"
+>Wave.WaveP</A> waveP;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Wave.html#PDE.FiniteVolume.FluxLimiter.Wave.WaveP"
+>Wave.WaveP</A> waveP1(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Wave.html#PDE.FiniteVolume.FluxLimiter.Wave.WaveP"
+>Wave.WaveP</A> waveP2(p=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Fluctuations.html#PDE.FiniteVolume.FluxLimiter.Fluctuations.Fluctuation"
+>Fluctuations.Fluctuation</A> fluctuation;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Fluctuations.html#PDE.FiniteVolume.FluxLimiter.Fluctuations.Fluctuation"
+>Fluctuations.Fluctuation</A> fluctuation1;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Fluctuations.html#PDE.FiniteVolume.FluxLimiter.Fluctuations.Fluctuation"
+>Fluctuations.Fluctuation</A> fluctuation2;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_1[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_2[worldModel1.m,worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Teta.html#PDE.FiniteVolume.FluxLimiter.Teta.teta"
+>Teta.teta</A> teta;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Teta.html#PDE.FiniteVolume.FluxLimiter.Teta.teta"
+>Teta.teta</A> teta1(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Teta.html#PDE.FiniteVolume.FluxLimiter.Teta.teta"
+>Teta.teta</A> teta2(p=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Limitedalpha.html#PDE.FiniteVolume.FluxLimiter.Limitedalpha.LimitedAlpha"
+>Limitedalpha.LimitedAlpha</A> limitedAlpha;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Limitedalpha.html#PDE.FiniteVolume.FluxLimiter.Limitedalpha.LimitedAlpha"
+>Limitedalpha.LimitedAlpha</A> limitedAlpha1(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Limitedalpha.html#PDE.FiniteVolume.FluxLimiter.Limitedalpha.LimitedAlpha"
+>Limitedalpha.LimitedAlpha</A> limitedAlpha2(p=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Wave.html#PDE.FiniteVolume.FluxLimiter.Wave.WaveP"
+>Wave.WaveP</A> waveP3;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Wave.html#PDE.FiniteVolume.FluxLimiter.Wave.WaveP"
+>Wave.WaveP</A> waveP4(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Wave.html#PDE.FiniteVolume.FluxLimiter.Wave.WaveP"
+>Wave.WaveP</A> waveP5(p=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimited.html#PDE.FiniteVolume.FluxLimiter.FluxLimited.FluxLimited"
+>FluxLimited.FluxLimited</A> fluxLimited;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimited.html#PDE.FiniteVolume.FluxLimiter.FluxLimited.FluxLimited"
+>FluxLimited.FluxLimited</A> fluxLimited1(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimited.html#PDE.FiniteVolume.FluxLimiter.FluxLimited.FluxLimited"
+>FluxLimited.FluxLimited</A> fluxLimited2(p=3);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_3[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> lambda1(y=1.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> lambda2(y=2.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> lambda3(y=2.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> R[worldModel1.m,worldModel1.m](
+     y={{-0.5,0,0.5},{1,0,1},{0,1,0}});
+  <A HREF="PDE_FiniteVolume_FluxLimiter_DeltaQ.html#PDE.FiniteVolume.FluxLimiter.DeltaQ.deltaQ"
+>DeltaQ.deltaQ</A> deltaQ;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FLIntegrator.html#PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegrator"
+>FLIntegrator.FLIntegrator</A> Acoustics(bcl=0, bcr=0);
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(
+    m=3,
+    deltat=0.1,
+    n=10,
+    fls=1);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"
+>FluxLimiterSolver.FluxLimiterSolver</A> fluxLimiterSolver;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"
+>FluxLimiterSolver.FluxLimiterSolver</A> fluxLimiterSolver1(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"
+>FluxLimiterSolver.FluxLimiterSolver</A> fluxLimiterSolver2(p=3);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> IC[worldModel1.m,worldModel1.
+    n](y=2.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL[worldModel1.m,
+    worldModel1.gcl](y=1.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCR[worldModel1.m,
+    worldModel1.gcr](y=1.0);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(alpha.y, waveP.u);
+  <font color="red">connect</font>(alpha.y, waveP1.u);
+  <font color="red">connect</font>(alpha.y, waveP2.u);
+  <font color="red">connect</font>(waveP.y, fluctuation.u1);
+  <font color="red">connect</font>(waveP1.y, fluctuation1.u1);
+  <font color="red">connect</font>(waveP2.y, fluctuation2.u1);
+  <font color="red">connect</font>(fluctuation.y, add3_1.u1);
+  <font color="red">connect</font>(fluctuation1.y, add3_1.u2);
+  <font color="red">connect</font>(fluctuation2.y, add3_1.u3);
+  <font color="red">connect</font>(fluctuation.y1, add3_2.u1);
+  <font color="red">connect</font>(fluctuation1.y1, add3_2.u2);
+  <font color="red">connect</font>(fluctuation2.y1, add3_2.u3);
+  <font color="red">connect</font>(limitedAlpha.y, waveP3.u);
+  <font color="red">connect</font>(limitedAlpha1.y, waveP4.u);
+  <font color="red">connect</font>(limitedAlpha2.y, waveP5.u);
+  <font color="red">connect</font>(waveP3.y, fluxLimited.u1);
+  <font color="red">connect</font>(waveP4.y, fluxLimited1.u1);
+  <font color="red">connect</font>(waveP5.y, fluxLimited2.u1);
+  <font color="red">connect</font>(fluxLimited.y, add3_3.u1);
+  <font color="red">connect</font>(fluxLimited1.y, add3_3.u2);
+  <font color="red">connect</font>(fluxLimited2.y, add3_3.u3);
+  <font color="red">connect</font>(R.y, riemann.u1);
+  <font color="red">connect</font>(R.y, waveP2.u1);
+  <font color="red">connect</font>(R.y, waveP1.u1);
+  <font color="red">connect</font>(R.y, waveP.u1);
+  <font color="red">connect</font>(R.y, waveP3.u1);
+  <font color="red">connect</font>(R.y, waveP4.u1);
+  <font color="red">connect</font>(R.y, waveP5.u1);
+  <font color="red">connect</font>(lambda1.y, fluctuation.u);
+  <font color="red">connect</font>(lambda2.y, fluctuation1.u);
+  <font color="red">connect</font>(lambda3.y, fluctuation2.u);
+  <font color="red">connect</font>(lambda1.y, teta.u1);
+  <font color="red">connect</font>(lambda2.y, teta1.u1);
+  <font color="red">connect</font>(lambda3.y, teta2.u1);
+  <font color="red">connect</font>(lambda1.y, fluxLimited.u);
+  <font color="red">connect</font>(lambda2.y, fluxLimited1.u);
+  <font color="red">connect</font>(lambda3.y, fluxLimited2.u);
+  <font color="red">connect</font>(riemann.y, alpha.u);
+  <font color="red">connect</font>(riemann.y, teta.u);
+  <font color="red">connect</font>(riemann.y, teta1.u);
+  <font color="red">connect</font>(riemann.y, teta2.u);
+  <font color="red">connect</font>(alpha.y, limitedAlpha.u1);
+  <font color="red">connect</font>(alpha.y, limitedAlpha1.u1);
+  <font color="red">connect</font>(alpha.y, limitedAlpha2.u1);
+  <font color="red">connect</font>(deltaQ.y, riemann.u);
+  <font color="red">connect</font>(Acoustics.y, deltaQ.u);
+  <font color="red">connect</font>(add3_1.y, Acoustics.u);
+  <font color="red">connect</font>(add3_2.y, Acoustics.u1);
+  <font color="red">connect</font>(add3_3.y, Acoustics.u2);
+  <font color="red">connect</font>(teta.y, fluxLimiterSolver.u);
+  <font color="red">connect</font>(fluxLimiterSolver.y, limitedAlpha.u);
+  <font color="red">connect</font>(teta1.y, fluxLimiterSolver1.u);
+  <font color="red">connect</font>(fluxLimiterSolver1.y, limitedAlpha1.u);
+  <font color="red">connect</font>(teta2.y, fluxLimiterSolver2.u);
+  <font color="red">connect</font>(fluxLimiterSolver2.y, limitedAlpha2.u);
+  <font color="red">connect</font>(IC.y, Acoustics.u4);
+  <font color="red">connect</font>(BCL.y, Acoustics.u5);
+  <font color="red">connect</font>(BCR.y, Acoustics.u6);
+<font color="blue">end </font>Acoustics;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE ICacoustics<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacousticsI.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacoustics" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacoustics"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic"
+>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic</A>.ICacoustics</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacousticsD.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacoustics">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition for the acoustics example.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> ICacoustics
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+  y[1, j] = 1.0;
+  y[2, j] = 0.0;
+  y[3, j] = 2.5;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n];
+<font color="blue">end </font>ICacoustics;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BCLacoustics<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacousticsI.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacoustics" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacoustics"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic"
+>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic</A>.BCLacoustics</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacousticsD.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacoustics">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the left boundary condition for the acoustics example.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.gcl]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> BCLacoustics
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:gcl<font color="blue"> loop</font>
+  y[1, j] = 1.0;
+  y[2, j] = 0.0;
+  y[3, j] = 2.5;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.gcl];
+<font color="blue">end </font>BCLacoustics;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BCRacoustics<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacousticsI.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacoustics" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacoustics"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic"
+>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic</A>.BCRacoustics</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacousticsD.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacoustics">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the right boundary condition for the acoustics example.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> BCRacoustics
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:gcr<font color="blue"> loop</font>
+  y[1, j] = 0.125;
+  y[2, j] = 0.0;
+  y[3, j] = 0.25;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.gcr];
+<font color="blue">end </font>BCRacoustics;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:03 2007.
+</address></BODY>
+</HTML>

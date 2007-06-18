@@ -1,0 +1,267 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.Wave</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Wave<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Wave"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.Wave</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains wave equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave.WaveEquation"
+>WaveEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Wave.WaveICS.png" ALT="PDE.MOL.Examples.Wave.WaveIC" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave.WaveIC"
+>WaveIC</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Wave.WaveAnalyticS.png" ALT="PDE.MOL.Examples.Wave.WaveAnalytic" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave.WaveAnalytic"
+>WaveAnalytic</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE WaveEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Wave.WaveEquation"></A><A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave"
+>PDE.MOL.Examples.Wave</A>.WaveEquation</H2>
+<IMG SRC="PDE.MOL.Examples.Wave.WaveEquationD.png" ALT="PDE.MOL.Examples.Wave.WaveEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Wave equation</font></h3>
+<p>
+Implements the wave equation
+</p>
+
+<img align=middle src="..\Images\w1.png">
+
+<p>
+where c is a constant value. The initial conditions are
+</p>
+
+<img align=middle src="..\Images\w3.png">
+
+
+<p>
+and boundary conditions are
+</p>
+
+<img align=middle src="..\Images\w4.png">
+
+<p>
+Because the integrator block cannot accept the equation in this form, we
+transform the PDE above into two first-order PDEs:
+</p>
+
+<img align=middle src="..\Images\w2.png">
+
+<p>
+The first equation is implemented in <b>u</b> block, the second in <b>v</b> block.
+</p>
+The analytical solution of this problem is implemented in <b>WaveAnalytic</b> block.
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> WaveEquation
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1(qss=1,
+    u_xx=1,
+    n=10);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCLu;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCLv;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICv[worldModel1.n];
+  <A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave.WaveIC"
+>WaveIC</A> waveIC;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> Friction[worldModel1.n](y=0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n];
+  <A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave.WaveAnalytic"
+>WaveAnalytic</A> waveAnalytic;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> alpha2[worldModel1.n](y=1.0);
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_xx"
+>PDE.MOL.SpaceDerivative.Derivatives.u_xx</A> u_xx(
+                            bcr=-1);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> u(
+    vb=2,
+    icb=2,
+    bcl=1);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> v(
+    vb=2,
+    icb=2,
+    bcl=1);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(product.y, add.u2);
+  <font color="red">connect</font>(Friction.y, product.u1);
+  <font color="red">connect</font>(alpha2.y, product1.u1);
+  <font color="red">connect</font>(product1.y, add.u1);
+  <font color="red">connect</font>(u_xx.y, product1.u2);
+  <font color="red">connect</font>(u.y, u_xx.u);
+  <font color="red">connect</font>(v.y, product.u2);
+  <font color="red">connect</font>(add.y, v.u);
+  <font color="red">connect</font>(v.y, u.u);
+  <font color="red">connect</font>(waveIC.y, u.u1);
+  <font color="red">connect</font>(BCLu.y, u.u2);
+  <font color="red">connect</font>(ICv.y, v.u1);
+  <font color="red">connect</font>(BCLv.y, v.u2);
+<font color="blue">end </font>WaveEquation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE WaveIC<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Wave.WaveICI.png" ALT="PDE.MOL.Examples.Wave.WaveIC" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Wave.WaveIC"></A><A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave"
+>PDE.MOL.Examples.Wave</A>.WaveIC</H2>
+<IMG SRC="PDE.MOL.Examples.Wave.WaveICD.png" ALT="PDE.MOL.Examples.Wave.WaveIC">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition for the first equation of the wave equation system
+</p>
+
+<img align=middle src="..\Images\w5.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> WaveIC
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+
+  <font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer n = worldModel1.n;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.IntegerExpression"
+>Modelica.Blocks.Sources.IntegerExpression</A> integerExpression[worldModel1.n](y=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> realExpression[worldModel1.n](y=3.14);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> realExpression1[worldModel1.n](y=2*(
+        worldModel1.n - 1));
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</A> index_i[worldModel1.n](k=1:worldModel1.
+        n);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Sin"
+>Modelica.Blocks.Math.Sin</A> sin[worldModel1.n];
+<font color="blue">equation </font>
+  <font color="red">connect</font>(realExpression.y, product.u2);
+  <font color="red">connect</font>(add.y, product.u1);
+  <font color="red">connect</font>(product.y, division.u1);
+  <font color="red">connect</font>(index_i.y, add.u1);
+  <font color="red">connect</font>(realExpression1.y, division.u2);
+  <font color="red">connect</font>(integerExpression.y, add.u2);
+  <font color="red">connect</font>(division.y, sin.u);
+  <font color="red">connect</font>(sin.y, y);
+<font color="blue">end </font>WaveIC;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE WaveAnalytic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Wave.WaveAnalyticI.png" ALT="PDE.MOL.Examples.Wave.WaveAnalytic" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Wave.WaveAnalytic"></A><A HREF="PDE_MOL_Examples_Wave.html#PDE.MOL.Examples.Wave"
+>PDE.MOL.Examples.Wave</A>.WaveAnalytic</H2>
+<IMG SRC="PDE.MOL.Examples.Wave.WaveAnalyticD.png" ALT="PDE.MOL.Examples.Wave.WaveAnalytic">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the analytical solution of the wave equation
+</p>
+
+<img align=middle src="..\Images\w6.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> WaveAnalytic
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon4"
+>Icons.BlockIcon4</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] = 0.5*<font color="red">sin</font>((3.14/2)*(((i-1)/(n-1)) - time)) + 0.5*<font color="red">sin</font>((3.14/2)*(((i-1)/(n-1)) + time));
+  <font color="blue">end for</font>;
+<font color="blue">end </font>WaveAnalytic;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:16 2007.
+</address></BODY>
+</HTML>

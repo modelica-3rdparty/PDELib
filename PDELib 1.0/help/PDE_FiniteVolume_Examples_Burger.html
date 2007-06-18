@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Examples.Burger</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Burger<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.Burger"></A><A HREF="PDE_FiniteVolume_Examples.html#PDE.FiniteVolume.Examples"
+>PDE.FiniteVolume.Examples</A>.Burger</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Burger´s equation solved with the Finite Volume Methods.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_FiniteVolume_Examples_Burger.html#PDE.FiniteVolume.Examples.Burger.BurgerEquationLDLR"
+>BurgerEquationLDLR</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BurgerEquationLDLR<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.Burger.BurgerEquationLDLR"></A><A HREF="PDE_FiniteVolume_Examples_Burger.html#PDE.FiniteVolume.Examples.Burger"
+>PDE.FiniteVolume.Examples.Burger</A>.BurgerEquationLDLR</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.Burger.BurgerEquationLDLRD.png" ALT="PDE.FiniteVolume.Examples.Burger.BurgerEquationLDLR">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Burger´s equation</font></h3>
+<p>
+Implements the inviscid Burger´s equation
+</p>
+
+<img align=middle src="..\Images\b1.png">
+
+<p>
+The initial condition is
+</p>
+
+<img align=middle src="..\Images\b2.png">
+
+<p>
+and boundary conditions are
+</p>
+
+<p>
+<img align=middle src="..\Images\b3.png">
+</p>
+<p>
+<img align=middle src="..\Images\b4.png">
+</p>
+
+<p>
+The analytical solution of this problem is implemented in PDE->MOL->Examples->Burger->BAN block
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> BurgerEquationLDLR
+  <A HREF="PDE_FiniteVolume_FVMIntegrator.html#PDE.FiniteVolume.FVMIntegrator.FVIntegrator"
+>PDE.FiniteVolume.FVMIntegrator.FVIntegrator</A> Burger(
+                                              bcr=0,
+    gcl=2,
+    gcr=2,
+    vb=worldModel1.gcl + 1,
+    icb=worldModel1.gcl + 1,
+    bcl=0);
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRminus"
+>PDE.FiniteVolume.LDLR.L.LDLRminus</A> lDLRminus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRplus"
+>PDE.FiniteVolume.LDLR.L.LDLRplus</A> lDLRplus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>PDE.FiniteVolume.LDLR.u.u_minus</A> u_minus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>PDE.FiniteVolume.LDLR.u.u_plus</A> u_plus_plus;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> const[worldModel1.n + 1](y=2.0);
+  <A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"
+>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF</A> lF(
+                                      alpha=0.9);
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(
+    gcl=2,
+    gcr=2,
+    n=40);
+  <A HREF="PDE_MOL_Examples_Burger.html#PDE.MOL.Examples.Burger.BICx"
+>MOL.Examples.Burger.BICx</A> bICx;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BC[2];
+<font color="blue">equation </font>
+  <font color="red">connect</font>(Burger.y, lDLRminus_plus.u);
+  <font color="red">connect</font>(Burger.y, lDLRplus_plus.u);
+  <font color="red">connect</font>(Burger.y, u_minus_plus.u);
+  <font color="red">connect</font>(Burger.y, u_plus_plus.u);
+  <font color="red">connect</font>(lDLRminus_plus.y, u_minus_plus.u1);
+  <font color="red">connect</font>(lDLRplus_plus.y, u_plus_plus.u1);
+  <font color="red">connect</font>(u_minus_plus.y, product.u1);
+  <font color="red">connect</font>(u_minus_plus.y, product.u2);
+  <font color="red">connect</font>(u_plus_plus.y, product1.u1);
+  <font color="red">connect</font>(u_plus_plus.y, product1.u2);
+  <font color="red">connect</font>(product.y, division.u1);
+  <font color="red">connect</font>(product1.y, division1.u1);
+  <font color="red">connect</font>(const.y, division.u2);
+  <font color="red">connect</font>(const.y, division1.u2);
+  <font color="red">connect</font>(division.y, lF.u);
+  <font color="red">connect</font>(division1.y, lF.u1);
+  <font color="red">connect</font>(u_plus_plus.y, lF.u2);
+  <font color="red">connect</font>(u_minus_plus.y, lF.u3);
+  <font color="red">connect</font>(lF.y, Burger.u);
+  <font color="red">connect</font>(BC.y, Burger.u3);
+  <font color="red">connect</font>(BC.y, Burger.u4);
+  <font color="red">connect</font>(bICx.y, Burger.u2);
+<font color="blue">end </font>BurgerEquationLDLR;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:52 2007.
+</address></BODY>
+</HTML>

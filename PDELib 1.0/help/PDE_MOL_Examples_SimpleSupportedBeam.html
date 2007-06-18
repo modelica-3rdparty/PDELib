@@ -1,0 +1,258 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.SimpleSupportedBeam</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE SimpleSupportedBeam<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.SimpleSupportedBeam"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.SimpleSupportedBeam</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains simple supported beam equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam.Beam"
+>Beam</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.SimpleSupportedBeam.SSBICS.png" ALT="PDE.MOL.Examples.SimpleSupportedBeam.SSBIC" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam.SSBIC"
+>SSBIC</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalyticS.png" ALT="PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalytic" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalytic"
+>SSBAnalytic</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Beam<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.SimpleSupportedBeam.Beam"></A><A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam"
+>PDE.MOL.Examples.SimpleSupportedBeam</A>.Beam</H2>
+<IMG SRC="PDE.MOL.Examples.SimpleSupportedBeam.BeamD.png" ALT="PDE.MOL.Examples.SimpleSupportedBeam.Beam">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Simple supported beam equation</font></h3>
+<p>
+Implements the simple supported beam equation
+</p>
+
+<img align=middle src="..\Images\ssb1.png">
+
+<p>
+The initial conditions are
+</p>
+<p>
+<img align=middle src="..\Images\ssb2.png">
+</p>
+<p>
+<img align=middle src="..\Images\ssb3.png">
+</p>
+
+<p>
+and boundary conditions are
+</p>
+
+<img align=middle src="..\Images\ssb4.png">
+
+<p>
+Because the integrator block cannot accept the equation in this form, we
+transform the PDE above into two first-order PDEs:
+</p>
+
+<img align=middle src="..\Images\ssb5.png">
+
+<p>
+The first equation is implemented in <b>v</b> block, the second in <b>w</b> block. <br>
+The analytical solution of this problem is implemented in <b>SSBAnalytic</b> block.
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Beam
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> v(
+    vb=2,
+    ve=worldModel1.n - 1,
+    icb=2,
+    ice=worldModel1.n - 1,
+    bcl=1,
+    bcr=1);
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(u_xx=1, n=60);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>Integrator.UniversalIntegrator</A> w(
+    vb=2,
+    ve=worldModel1.n - 1,
+    icb=2,
+    ice=worldModel1.n - 1,
+    bcl=1,
+    bcr=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</A> gain[worldModel1.n](k=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCLu;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCRu;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICv[worldModel1.n];
+  <A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam.SSBIC"
+>SSBIC</A> sSBIC;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCLv;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCRv;
+  <A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalytic"
+>SSBAnalytic</A> sSBAnalytic;
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_xx"
+>SpaceDerivative.Derivatives.u_xx</A> u_xx(bcl=0, bcr=0);
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_xx"
+>SpaceDerivative.Derivatives.u_xx</A> u_xx1(bcl=-1, bcr=-1);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(BCLu.y,v. u2);
+  <font color="red">connect</font>(BCRu.y,v. u3);
+  <font color="red">connect</font>(ICv.y,w. u1);
+  <font color="red">connect</font>(sSBIC.y,v. u1);
+  <font color="red">connect</font>(BCLv.y,w. u2);
+  <font color="red">connect</font>(BCRv.y,w. u3);
+  <font color="red">connect</font>(w.y, u_xx.u);
+  <font color="red">connect</font>(u_xx.y, gain.u);
+  <font color="red">connect</font>(gain.y,v. u);
+  <font color="red">connect</font>(v.y, u_xx1.u);
+  <font color="red">connect</font>(u_xx1.y,w. u);
+<font color="blue">end </font>Beam;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE SSBIC<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.SimpleSupportedBeam.SSBICI.png" ALT="PDE.MOL.Examples.SimpleSupportedBeam.SSBIC" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.SimpleSupportedBeam.SSBIC"></A><A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam"
+>PDE.MOL.Examples.SimpleSupportedBeam</A>.SSBIC</H2>
+<IMG SRC="PDE.MOL.Examples.SimpleSupportedBeam.SSBICD.png" ALT="PDE.MOL.Examples.SimpleSupportedBeam.SSBIC">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the initial condition for the <b>v</b> block of the simple supported beam equation
+</p>
+
+<p>
+<img align=middle src="..\Images\ssb2.png">
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> SSBIC
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">protected </font>
+  Real pi = 3.14159265;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] =<font color="red"> sin</font>(pi*(i-1)/(n-1)) + 0.5*(<font color="red">sin</font>(3*pi*(i-1)/(n-1)));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>SSBIC;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE SSBAnalytic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalyticI.png" ALT="PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalytic" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalytic"></A><A HREF="PDE_MOL_Examples_SimpleSupportedBeam.html#PDE.MOL.Examples.SimpleSupportedBeam"
+>PDE.MOL.Examples.SimpleSupportedBeam</A>.SSBAnalytic</H2>
+<IMG SRC="PDE.MOL.Examples.SimpleSupportedBeam.SSBICD.png" ALT="PDE.MOL.Examples.SimpleSupportedBeam.SSBAnalytic">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the analytical solution of the simple supported beam equation
+</p>
+
+<img align=middle src="..\Images\ssb6.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> SSBAnalytic
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon4"
+>Icons.BlockIcon4</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+
+<font color="blue">protected </font>
+  Real pi = 3.14159265;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    y[i] = (<font color="red">cos</font>((pi^2)*time))*(<font color="red">sin</font>(pi*(i-1)/(n-1)))  + 0.5*(<font color="red">cos</font>(9*(pi^2)*time))*(<font color="red">sin</font>(3*pi*(i-1)/(n-1)));
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>SSBAnalytic;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:33 2007.
+</address></BODY>
+</HTML>

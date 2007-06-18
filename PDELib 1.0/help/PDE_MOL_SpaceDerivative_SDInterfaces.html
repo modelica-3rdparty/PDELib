@@ -1,0 +1,446 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.SpaceDerivative.SDInterfaces</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE SDInterfaces<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.SpaceDerivative.SDInterfaces"></A><A HREF="PDE_MOL_SpaceDerivative.html#PDE.MOL.SpaceDerivative"
+>PDE.MOL.SpaceDerivative</A>.SDInterfaces</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains blocks for the computation of spatial derivative schemes of different order.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2S.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2"
+>u_xCD2B2</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2S.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4"
+>u_xCD4B4</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2S.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6"
+>u_xCD6B6</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2S.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2"
+>u_xxCD2B2</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2S.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4"
+>u_xxCD4B4</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_xCD2B2<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2I.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2"></A><A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces"
+>PDE.MOL.SpaceDerivative.SDInterfaces</A>.u_xCD2B2</H2>
+<IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2D.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Computes the second-order central difference approximation to the first-order space derivative with second-order biased approximation for boundary points. <br>
+By using the Newton-Gregory backward polynomial we obtain<br>
+</p>
+
+<img align=middle src="..\Images\f2.png">
+
+<p>
+For second-order central difference approximation, we need to fit the polynomial through the three points <br>
+x<sub>i-1</sub>, x<sub>i</sub>, x<sub>i+1</sub>. This means to write the polynomial for example around the point x<sub>i+1</sub>,
+drop the higher-oder terms and set s = -1 to obtain
+</p>
+
+<img align=middle src="..\Images\f9.png">
+
+
+<p>
+For the boundary point x<sub>1</sub> we use biased formula and obtain
+</p>
+
+<img align=middle src="..\Images\f10.png">
+
+<p>
+By using the same idea we obtain a biased formula for the boundary point x<sub>n</sub>
+</p>
+
+<img align=middle src="..\Images\f11.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/(n - 1)</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_xCD2B2
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+
+<font color="blue">outer </font>Integer n;
+<font color="blue">outer </font>Integer bcl;
+<font color="blue">outer </font>Integer bcr;
+<font color="blue">parameter </font>Real deltax = 1/(n-1);
+<font color="darkgreen">// parameter Integer bcl = worldModel1.bcl;</font>
+<font color="darkgreen">// parameter Integer bcr = worldModel1.bcr;</font>
+
+<font color="blue">equation </font>
+  <font color="blue">if </font>bcl == -1<font color="blue"> then</font>
+    y[1] = 0;
+  <font color="blue">else</font>
+    y[1] = (-u[3] + 4*u[2] - 3*u[1])/(2*deltax);
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>2:n-1<font color="blue"> loop</font>
+    y[i] = (u[i+1] - u[i-1])/(2*deltax);
+  <font color="blue">end for</font>;
+
+  <font color="blue">if </font>bcr == -1<font color="blue"> then</font>
+    y[n] = 0;
+  <font color="blue">else</font>
+    y[n] = (3*u[n] - 4*u[n-1] + u[n-2])/(2*deltax);
+  <font color="blue">end if</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+<font color="blue">end </font>u_xCD2B2;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_xCD4B4<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4I.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4"></A><A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces"
+>PDE.MOL.SpaceDerivative.SDInterfaces</A>.u_xCD4B4</H2>
+<IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2D.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD4B4">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Computes the fourth-order central difference approximation to the first-order space derivative with fourth-order biased approximation for boundary points.
+</p>
+
+<img align=middle src="..\Images\f12.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/(n - 1)</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_xCD4B4
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+
+<font color="blue">outer </font>Integer n;
+<font color="blue">outer </font>Integer bcl;
+<font color="blue">outer </font>Integer bcr;
+<font color="blue">parameter </font>Real deltax = 1/(n-1);
+<font color="darkgreen">// parameter Integer bcl = worldModel1.bcl;</font>
+<font color="darkgreen">// parameter Integer bcr = worldModel1.bcr;</font>
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+<font color="blue">equation </font>
+  <font color="blue">if </font>bcl == -1<font color="blue"> then</font>
+    y[1] = 0;
+    y[2] = (-u[4] + 8*u[3] + u[2] - 8*u[1])/(12*deltax);
+  <font color="blue">else</font>
+    y[1] = (-3*u[5] + 16*u[4] - 36*u[3] + 48*u[2] - 25*u[1])/(12*deltax);
+    y[2] = (u[5] - 6*u[4] + 18*u[3] - 10*u[2] - 3*u[1])/(12*deltax);
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>3:n-2<font color="blue"> loop</font>
+    y[i] = (-u[i+2] + 8*u[i+1] - 8*u[i-1] + u[i-2])/(12*deltax);
+  <font color="blue">end for</font>;
+
+  <font color="blue">if </font>bcr == -1<font color="blue"> then</font>
+    y[n-1] = (8*u[n] - u[n-1] - 8*u[n-2] + u[n-3])/(12*deltax);
+    y[n] = 0;
+  <font color="blue">else</font>
+    y[n-1] = (3*u[n] + 10*u[n-1] - 18*u[n-2] + 6*u[n-3] - u[n-4])/(12*deltax);
+    y[n] = (25*u[n] - 48*u[n-1] + 36*u[n-2] - 16*u[n-3] + 3*u[n-4])/(12*deltax);
+  <font color="blue">end if</font>;
+
+<font color="blue">end </font>u_xCD4B4;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_xCD6B6<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6I.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6"></A><A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces"
+>PDE.MOL.SpaceDerivative.SDInterfaces</A>.u_xCD6B6</H2>
+<IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2D.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD6B6">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Computes the sixth-order central difference approximation to the first-order space derivative with sixth-order biased approximation for boundary points.
+</p>
+
+<img align=middle src="..\Images\f13.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/(n - 1)</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_xCD6B6
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font>Integer n;
+<font color="blue">outer </font>Integer bcl;
+<font color="blue">outer </font>Integer bcr;
+<font color="blue">parameter </font>Real deltax = 1/(n-1);
+
+<font color="blue">equation </font>
+  <font color="blue">if </font>bcl == -1<font color="blue"> then</font>
+    y[1] = 0;
+    y[2] = (u[5] - 9*u[4] + 44*u[3] + 9*u[2] - 45*u[1])/(60*deltax);
+    y[3] = (u[6] - 9*u[5] + 45*u[4] - 46*u[2] + 9*u[1])/(60*deltax);
+  <font color="blue">else</font>
+    y[1] = (265*u[7] - 478*u[6] + 50*u[5] + 400*u[4] - 450*u[3] + 360*u[2] - 147*u[1])/(60*deltax);
+    y[2] = (-3463*u[7] + 13845*u[6] - 20740*u[5] + 13760*u[4] - 3315*u[3] - 77*u[2] - 10*u[1])/(60*deltax);
+    y[3] = (-u[7] + 8*u[6] - 30*u[5] + 80*u[4] - 35*u[3] - 24*u[2] + 2*u[1])/(60*deltax);
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>4:n-3<font color="blue"> loop</font>
+    y[i] = (u[i+3] - 9*u[i+2] + 45*u[i+1] - 45*u[i-1] + 9*u[i-2] - u[i-3])/(60*deltax);
+  <font color="blue">end for</font>;
+
+  <font color="blue">if </font>bcr == -1<font color="blue"> then</font>
+    y[n-2] = (-9*u[n] + 46*u[n-1] - 45*u[n-3] + 9*u[n-4] - u[n-5])/(60*deltax);
+    y[n-1] = (45*u[n] - 9*u[n-1] - 44*u[n-2] + 9*u[n-3] - u[n-4])/(60*deltax);
+    y[n] = 0;
+  <font color="blue">else</font>
+    y[n-2] = (-2*u[n] + 24*u[n-1] + 35*u[n-2] - 80*u[n-3] + 30*u[n-4] - 8*u[n-5] + u[n-6])/(60*deltax);
+    y[n-1] = (10*u[n] + 77*u[n-1] - 150*u[n-2] + 100*u[n-3] - 50*u[n-4] + 15*u[n-5] - 2*u[n-6])/(60*deltax);
+    y[n] = (147*u[n] - 360*u[n-1] + 450*u[n-2] - 400*u[n-3] + 225*u[n-4] - 72*u[n-5] + 10*u[n-6])/(60*deltax);
+  <font color="blue">end if</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+<font color="blue">end </font>u_xCD6B6;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_xxCD2B2<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2I.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2"></A><A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces"
+>PDE.MOL.SpaceDerivative.SDInterfaces</A>.u_xxCD2B2</H2>
+<IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2D.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD2B2">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the second-order central difference approximation to the second-order space derivative.
+</p>
+
+<img align=middle src="..\Images\f16.png">
+
+<p>
+For the boundary points second-order biased approximation is used.
+</p>
+
+<img align=middle src="..\Images\f14.png">
+<img align=middle src="..\Images\f15.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/(n - 1)</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_xxCD2B2
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font>Integer n;
+<font color="blue">outer </font>Integer bcl;
+<font color="blue">outer </font>Integer bcr;
+<font color="blue">parameter </font>Real deltax = 1/(n-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+<font color="blue">equation </font>
+  <font color="darkgreen">//bcl = -1 means: symmetry condition. If we do not have symmetry condition, then we use biased formula.</font>
+
+  <font color="blue">if </font>bcl == -1<font color="blue"> then</font>
+    y[1] = (1/(deltax^2))*(2*u[2] - 2*u[1]);
+  <font color="blue">else</font>
+    y[1] = (1/(deltax^2))*(u[3] - 2*u[2] + u[1]);
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>2:n-1<font color="blue"> loop</font>
+    y[i] = (1/(deltax^2))*(u[i+1] - 2*u[i] + u[i-1]);
+  <font color="blue">end for</font>;
+
+  <font color="blue">if </font>bcr == -1<font color="blue"> then</font>
+    y[n] = (1/(deltax^2))*(2*u[n-1] - 2*u[n]);
+  <font color="blue">else</font>
+    y[n] = (1/(deltax^2))*(u[n] - 2*u[n-1] + u[n-2]);
+  <font color="blue">end if</font>;
+
+<font color="blue">end </font>u_xxCD2B2;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE u_xxCD4B4<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4I.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4"></A><A HREF="PDE_MOL_SpaceDerivative_SDInterfaces.html#PDE.MOL.SpaceDerivative.SDInterfaces"
+>PDE.MOL.SpaceDerivative.SDInterfaces</A>.u_xxCD4B4</H2>
+<IMG SRC="PDE.MOL.SpaceDerivative.SDInterfaces.u_xCD2B2D.png" ALT="PDE.MOL.SpaceDerivative.SDInterfaces.u_xxCD4B4">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the second-order central difference approximation to the second-order space derivative.
+</p>
+
+<img align=middle src="..\Images\f7.png">
+
+<p>
+For the boundary points fourth-order biased approximation is used.
+</p>
+
+<img align=middle src="..\Images\f8.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/(n - 1)</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[n]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> u_xxCD4B4
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>PDE.Icons.BlockIcon</A>;
+
+<font color="blue">outer </font>Integer n;
+<font color="blue">outer </font>Integer bcl;
+<font color="blue">outer </font>Integer bcr;
+
+<font color="blue">parameter </font>Real deltax = 1/(n-1);
+<font color="blue">equation </font>
+  <font color="darkgreen">//bcl = -1 means: symmetry condition. If we do not have symmetry condition, then we use biased formula.</font>
+
+  <font color="blue">if </font>bcl == -1<font color="blue"> then</font>
+    y[1] = (1/(12*deltax^2))*(-2*u[3] + 32*u[2] - 30*u[1]);
+    y[2] = (1/(12*deltax^2))*(-u[4] + 16*u[3] - 31*u[2] + 16*u[1]);
+  <font color="blue">else</font>
+    y[1] = (1/(12*deltax^2))*(11*u[5] - 56*u[4] + 114*u[3] - 104*u[2] + 35*u[1]);
+    y[2] = (1/(12*deltax^2))*(-u[5] + 4*u[4] + 6*u[3] - 20*u[2] + 11*u[1]);
+  <font color="blue">end if</font>;
+
+  <font color="blue">for </font>i<font color="blue"> in </font>3:n-2<font color="blue"> loop</font>
+    y[i] = (1/(12*deltax^2))*(-u[i+2] + 16*u[i+1] - 30*u[i] + 16*u[i-1] - u[i-2]);
+  <font color="blue">end for</font>;
+
+  <font color="blue">if </font>bcr == -1<font color="blue"> then</font>
+    y[n-1] = (1/(12*deltax^2))*(16*u[n] - 31*u[n-1] + 16*u[n-2] - u[n-3]);
+    y[n] = (1/(12*deltax^2))*(-30*u[n] + 32*u[n-1] - 2*u[n-2]);
+  <font color="blue">else</font>
+    y[n-1] = (1/(12*deltax^2))*(11*u[n] - 20*u[n-1] + 6*u[n-2] + 4*u[n-3] - u[n-4]);
+    y[n] = (1/(12*deltax^2))*(35*u[n] - 104*u[n-1] + 114*u[n-2] - 56*u[n-3] + 11*u[n-4]);
+  <font color="blue">end if</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[n];
+<font color="blue">end </font>u_xxCD4B4;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:14 2007.
+</address></BODY>
+</HTML>

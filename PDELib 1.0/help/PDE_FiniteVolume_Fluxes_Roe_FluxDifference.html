@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Fluxes.Roe.FluxDifference</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FluxDifference<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Fluxes.Roe.FluxDifference"></A><A HREF="PDE_FiniteVolume_Fluxes_Roe.html#PDE.FiniteVolume.Fluxes.Roe"
+>PDE.FiniteVolume.Fluxes.Roe</A>.FluxDifference</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains FluxDiff block that computes the waves W+ and W-.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiffS.png" ALT="PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_Fluxes_Roe_FluxDifference.html#PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff"
+>FluxDiff</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FluxDiff<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiffI.png" ALT="PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff"></A><A HREF="PDE_FiniteVolume_Fluxes_Roe_FluxDifference.html#PDE.FiniteVolume.Fluxes.Roe.FluxDifference"
+>PDE.FiniteVolume.Fluxes.Roe.FluxDifference</A>.FluxDiff</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiffD.png" ALT="PDE.FiniteVolume.Fluxes.Roe.FluxDifference.FluxDiff">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Computes the waves
+</p>
+
+<img align=middle src="..\Images\r12.png">
+
+<p>
+and
+</p>
+
+<img align=middle src="..\Images\r13.png">
+
+<p>
+according to the eigenvalue lambda.
+</p>
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y1[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> FluxDiff
+<font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+  <font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <font color="blue">parameter </font>Integer n=worldModel1.n;
+  <font color="blue">parameter </font>Integer m=worldModel1.m;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+<font color="blue">if </font>u2[j] &gt; 0<font color="blue"> then</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+    y[i, j] = u[j]*u1[i, j];
+    y1[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">else</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+    y1[i, j] = u[j]*u1[i, j];
+    y[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">end if</font>;
+<font color="blue">end for</font>;
+
+  <font color="darkgreen">// for j in 1:n+1 loop</font>
+  <font color="darkgreen">//   for i in 1:m loop</font>
+  <font color="darkgreen">//     if u2[j] &gt; 0 then</font>
+  <font color="darkgreen">//       y[i, j] = u[j]*u1[i, j];</font>
+  <font color="darkgreen">//       y1[i, j] = 0.0;</font>
+  <font color="darkgreen">//     else</font>
+  <font color="darkgreen">//       y1[i, j] = u[j]*u1[i, j];</font>
+  <font color="darkgreen">//       y[i, j] = 0.0;</font>
+  <font color="darkgreen">//     end if;</font>
+  <font color="darkgreen">//   end for;</font>
+  <font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.m,worldModel1.n
+     + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y1[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>FluxDiff;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:39 2007.
+</address></BODY>
+</HTML>

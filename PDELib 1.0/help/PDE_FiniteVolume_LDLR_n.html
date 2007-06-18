@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.LDLR.n</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE n<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.LDLR.n"></A><A HREF="PDE_FiniteVolume_LDLR.html#PDE.FiniteVolume.LDLR"
+>PDE.FiniteVolume.LDLR</A>.n</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the functions n<sup>+</sup>(x) and n<sup>-</sup>(x) needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log2.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.n.n_plusS.png" ALT="PDE.FiniteVolume.LDLR.n.n_plus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_n.html#PDE.FiniteVolume.LDLR.n.n_plus"
+>n_plus</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.n.n_plusS.png" ALT="PDE.FiniteVolume.LDLR.n.n_minus" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_n.html#PDE.FiniteVolume.LDLR.n.n_minus"
+>n_minus</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE n_plus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.n.n_plusI.png" ALT="PDE.FiniteVolume.LDLR.n.n_plus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.n.n_plus"></A><A HREF="PDE_FiniteVolume_LDLR_n.html#PDE.FiniteVolume.LDLR.n"
+>PDE.FiniteVolume.LDLR.n</A>.n_plus</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.n.n_plusD.png" ALT="PDE.FiniteVolume.LDLR.n.n_plus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the function n<sup>+</sup>(x) needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log13.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> n_plus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="darkgreen">// parameter Integer gcl = worldModel1.gcl;</font>
+<font color="darkgreen">// parameter Integer gcr = worldModel1.gcr;</font>
+
+<font color="blue">equation </font>
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = (-(<font color="red">log</font>(1 - u[i])) - u[i])/((u[i])^2);
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+1:gcl+n loop</font>
+<font color="darkgreen">//   y[i] = (-log(1 - u[i]) - u[i])/(u[i])^2;</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>n_plus;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE n_minus<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.n.n_minusI.png" ALT="PDE.FiniteVolume.LDLR.n.n_minus" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.n.n_minus"></A><A HREF="PDE_FiniteVolume_LDLR_n.html#PDE.FiniteVolume.LDLR.n"
+>PDE.FiniteVolume.LDLR.n</A>.n_minus</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.n.n_plusD.png" ALT="PDE.FiniteVolume.LDLR.n.n_minus">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the function n<sup>-</sup>(x) needed for the logarithmic reconstruction
+</p>
+
+<img align=middle src="..\Images\log14.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> n_minus
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="darkgreen">// parameter Integer gcl = worldModel1.gcl;</font>
+<font color="darkgreen">// parameter Integer gcr = worldModel1.gcr;</font>
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">equation </font>
+
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = ((u[i] - 1)*(<font color="red">log</font>(1 - u[i])) - u[i])/((u[i])^2);
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+1:gcl+n loop</font>
+<font color="darkgreen">//   y[i] = -((u[i] - 1)*log(1 - u[i]) - u[i])/(u[i])^2;</font>
+<font color="darkgreen">// end for;</font>
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">end </font>n_minus;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:40 2007.
+</address></BODY>
+</HTML>

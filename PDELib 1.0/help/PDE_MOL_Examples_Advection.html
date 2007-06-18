@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.MOL.Examples.Advection</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Advection<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Advection"></A><A HREF="PDE_MOL_Examples.html#PDE.MOL.Examples"
+>PDE.MOL.Examples</A>.Advection</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains advection equation solved with the Method of Lines.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_MOL_Examples_Advection.html#PDE.MOL.Examples.Advection.AdvectionEquation"
+>AdvectionEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.MOL.Examples.Advection.AdvectionAnalyticS.png" ALT="PDE.MOL.Examples.Advection.AdvectionAnalytic" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_MOL_Examples_Advection.html#PDE.MOL.Examples.Advection.AdvectionAnalytic"
+>AdvectionAnalytic</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE AdvectionEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.MOL.Examples.Advection.AdvectionEquation"></A><A HREF="PDE_MOL_Examples_Advection.html#PDE.MOL.Examples.Advection"
+>PDE.MOL.Examples.Advection</A>.AdvectionEquation</H2>
+<IMG SRC="PDE.MOL.Examples.Advection.AdvectionEquationD.png" ALT="PDE.MOL.Examples.Advection.AdvectionEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Advection equation</font></h3>
+<p>
+Implements the linear advection equation
+</p>
+
+<img align=middle src="..\Images\a1.png">
+
+<p>
+where c is a constant value. The initial condition is
+</p>
+
+<img align=middle src="..\Images\a3.png">
+
+<p>
+and boundary condition at the left is
+</p>
+
+<img align=middle src="..\Images\a4.png">
+
+<p>
+The analytical solution of this problem is implemented in <b>AdvectionAnalytic</b> block
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> AdvectionEquation
+
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(qss=2, n=10);
+  <A HREF="PDE_MOL_Integrator.html#PDE.MOL.Integrator.UniversalIntegrator"
+>PDE.MOL.Integrator.UniversalIntegrator</A> Advection(
+    ve=worldModel1.n,
+    ice=worldModel1.n,
+    bcr=0,
+    vb=2,
+    icb=2,
+    bcl=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL(y=<font color="red">cos</font>(-0.1*time));
+  <A HREF="PDE_MOL_Examples_Advection.html#PDE.MOL.Examples.Advection.AdvectionAnalytic"
+>AdvectionAnalytic</A> advectionAnalytic;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> Speed[worldModel1.n](y=-0.1);
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>PDE.MOL.SpaceDerivative.Derivatives.u_x</A> derivator;
+  <A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DiffusionIC"
+>Diffusion.DiffusionIC</A> diffusionIC;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(BCL.y, Advection.u2);
+  <font color="red">connect</font>(diffusionIC.y, Advection.u1);
+  <font color="red">connect</font>(product.y, Advection.u);
+  <font color="red">connect</font>(Speed.y, product.u2);
+  <font color="red">connect</font>(derivator.y, product.u1);
+  <font color="red">connect</font>(Advection.y, derivator.u);
+<font color="blue">end </font>AdvectionEquation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE AdvectionAnalytic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.MOL.Examples.Advection.AdvectionAnalyticI.png" ALT="PDE.MOL.Examples.Advection.AdvectionAnalytic" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.MOL.Examples.Advection.AdvectionAnalytic"></A><A HREF="PDE_MOL_Examples_Advection.html#PDE.MOL.Examples.Advection"
+>PDE.MOL.Examples.Advection</A>.AdvectionAnalytic</H2>
+<IMG SRC="PDE.MOL.Examples.Advection.AdvectionAnalyticD.png" ALT="PDE.MOL.Examples.Advection.AdvectionAnalytic">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the analytical solution of the advection equation
+</p>
+
+<img align=middle src="..\Images\a2.png">
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>speed</TD><TD>0.1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> AdvectionAnalytic
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon4"
+>Icons.BlockIcon4</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Real speed = 0.1;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:n<font color="blue"> loop</font>
+    <font color="darkgreen">//y[i+1] = 1 - abs((i)/n);</font>
+    y[i] =<font color="red"> cos</font>(((i-1)/(n-1)) - speed*time);
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n];
+<font color="blue">end </font>AdvectionAnalytic;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:20 2007.
+</address></BODY>
+</HTML>

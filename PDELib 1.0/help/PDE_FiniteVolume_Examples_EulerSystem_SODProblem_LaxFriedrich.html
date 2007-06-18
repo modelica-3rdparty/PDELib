@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LaxFriedrich<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem</A>.LaxFriedrich</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Euler equations solved with the Finite Volume Methods by using the Lax-Friedrichs flux.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_LaxFriedrich.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich.SOD"
+>SOD</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE SOD<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich.SOD"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_SODProblem_LaxFriedrich.html#PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich"
+>PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich</A>.SOD</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich.SODD.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.SODProblem.LaxFriedrich.SOD">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Euler equations solved with Lax-Friedrichs flux</font></h3>
+<p>
+Implements the Euler system of equations
+</p>
+<p>
+<img align=middle src="..\Images\euler.png">
+</p>
+
+<p>
+with Lax-Friedrichs flux. The initial conditions are
+</p>
+
+<img align=middle src="..\Images\sw4.png">
+
+<p>
+The boundary conditions are
+</p>
+
+<img align=middle src="..\Images\sw6.png">
+
+
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> SOD
+  <font color="blue">extends </font><A HREF="PDE_FiniteVolume_Examples_EulerSystem_BaseModel.html#PDE.FiniteVolume.Examples.EulerSystem.BaseModel.ShockWaveLDLR"
+>PDE.FiniteVolume.Examples.EulerSystem.BaseModel.ShockWaveLDLR</A>(
+                        worldModel1(n=10),
+    Density(
+      vb=worldModel1.gcl + 1,
+      icb=worldModel1.gcl + 1,
+      ve=worldModel1.gcl + worldModel1.n - 1,
+      ice=worldModel1.gcl + worldModel1.n - 1,
+      bcl=0),
+    Momentum(
+      vb=worldModel1.gcl + 2,
+      icb=worldModel1.gcl + 2,
+      bcr=0),
+    Energy(
+      vb=worldModel1.gcl + 1,
+      icb=worldModel1.gcl + 1,
+      ve=worldModel1.gcl + worldModel1.n - 1,
+      ice=worldModel1.gcl + worldModel1.n - 1,
+      bcl=0),
+    lF(alpha=0.2),
+    lF1(alpha=0.2),
+    lF2(alpha=0.2));
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICdensity[worldModel1.n](y=1.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCLdensity[worldModel1.gcl](y=0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCRdensity[worldModel1.gcr](y=
+        0.125);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICmomentum[worldModel1.n](y=
+        0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCLmomentum[worldModel1.gcl](y=
+       0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCRmomentum[worldModel1.gcr](y=
+       0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> ICenergy[worldModel1.n](y=2.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCLenergy[worldModel1.gcl](y=0.0);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCRenergy[worldModel1.gcr](y=
+        0.25);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(ICdensity.y, Density.u2);
+  <font color="red">connect</font>(BCRdensity.y, Density.u4);
+  <font color="red">connect</font>(ICmomentum.y, Momentum.u2);
+  <font color="red">connect</font>(BCLmomentum.y, Momentum.u3);
+  <font color="red">connect</font>(ICenergy.y, Energy.u2);
+  <font color="red">connect</font>(BCRenergy.y, Energy.u4);
+  <font color="red">connect</font>(BCLenergy.y, Energy.u3);
+  <font color="red">connect</font>(BCRmomentum.y, Momentum.u4);
+  <font color="red">connect</font>(BCLdensity.y, Density.u3);
+<font color="blue">end </font>SOD;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:55 2007.
+</address></BODY>
+</HTML>

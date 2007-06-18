@@ -1,0 +1,883 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE EulerSystem<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples.html#PDE.FiniteVolume.FluxLimiter.Examples"
+>PDE.FiniteVolume.FluxLimiter.Examples</A>.EulerSystem</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Euler equations example solved with the Finite Volume Methods by using flux limiters.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Euler"
+>Euler</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.RS.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.R" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.R"
+>R</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LS.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.L" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.L"
+>L</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1S.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1"
+>Riemann1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1S.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1"
+>WaveP1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1S.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1"
+>Fluctuation1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1S.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1"
+>teta1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1S.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1"
+>LimitedWave1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1S.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1"
+>FluxLimited1</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1S.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1"
+>Filter1</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Euler<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Euler"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.Euler</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.EulerD.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Euler">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Euler equations solved with flux limiters</font></h3>
+<p>
+Implements the Euler system of equations
+</p>
+<p>
+<img align=middle src="..\Images\euler.png">
+</p>
+
+<p>
+with Roe´s flux. The initial conditions are
+</p>
+
+<img align=middle src="..\Images\sw4.png">
+
+<p>
+The boundary conditions are
+</p>
+
+<img align=middle src="..\Images\sw6.png">
+
+<p>
+This system has eigenvalues
+</p>
+
+<img align=middle src="..\Images\eulerroe1.png">
+
+<p>
+and eigenvector matrix
+</p>
+
+<img align=middle src="..\Images\eulerroe2.png">
+
+<p>
+that are computed at each time step at each interface by the corresponding blocks.
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Euler
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Alpha.html#PDE.FiniteVolume.FluxLimiter.Alpha.Alpha"
+>Alpha.Alpha</A> alpha;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_1[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_2[worldModel1.m,worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Modelica.Blocks.Math.Add3</A> add3_3[worldModel1.m,worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_FluxLimiter_DeltaQ.html#PDE.FiniteVolume.FluxLimiter.DeltaQ.deltaQ"
+>DeltaQ.deltaQ</A> deltaQ;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FLIntegrator.html#PDE.FiniteVolume.FluxLimiter.FLIntegrator.FLIntegrator"
+>FLIntegrator.FLIntegrator</A> EulerSystem(bcl=0, bcr=0);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"
+>FluxLimiterSolver.FluxLimiterSolver</A> fluxLimiterSolver;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"
+>FluxLimiterSolver.FluxLimiterSolver</A> fluxLimiterSolver1(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_FluxLimiterSolver.html#PDE.FiniteVolume.FluxLimiter.FluxLimiterSolver.FluxLimiterSolver"
+>FluxLimiterSolver.FluxLimiterSolver</A> fluxLimiterSolver2(p=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacoustics"
+>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.ICacoustics</A> iCacoustics;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacoustics"
+>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCLacoustics</A> bCLacoustics;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_Acoustic.html#PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacoustics"
+>PDE.FiniteVolume.FluxLimiter.Examples.Acoustic.BCRacoustics</A> bCRacoustics;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n + worldModel1.
+    gcl + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> gamma[worldModel1.n +
+    worldModel1.gcl + worldModel1.gcr](y=1.4);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Sqrt"
+>Modelica.Blocks.Math.Sqrt</A> c[worldModel1.n + worldModel1.gcl +
+    worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> konst[worldModel1.n +
+    worldModel1.gcl + worldModel1.gcr](y=3.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division1[worldModel1.n + worldModel1.
+    gcl + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product3[worldModel1.n + worldModel1.gcl
+     + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> onehalf[worldModel1.n +
+    worldModel1.gcl + worldModel1.gcr](y=0.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> h[worldModel1.n + worldModel1.gcl +
+    worldModel1.gcr];
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.R"
+>R</A> r;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.L"
+>L</A> l(n=worldModel1.n, m=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1"
+>WaveP1</A> waveP1_1;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1"
+>WaveP1</A> waveP1_2(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1"
+>WaveP1</A> waveP1_3(p=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1"
+>Fluctuation1</A> fluctuation1_1;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1"
+>Fluctuation1</A> fluctuation1_2;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1"
+>Fluctuation1</A> fluctuation1_3;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1"
+>teta1</A> teta1_1(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1"
+>teta1</A> teta1_2;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1"
+>teta1</A> teta1_3(p=3);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1"
+>LimitedWave1</A> limitedWave1_1;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1"
+>LimitedWave1</A> limitedWave1_2;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1"
+>LimitedWave1</A> limitedWave1_3;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1"
+>FluxLimited1</A> fluxLimited1_1;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1"
+>FluxLimited1</A> fluxLimited1_2(p=2);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1"
+>FluxLimited1</A> fluxLimited1_3(p=3);
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(m=3,
+    deltat=0.0004,
+    fls=5,
+    n=10);
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1"
+>Filter1</A> filter1_1;
+  <A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1"
+>Riemann1</A> riemann1_1;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(EulerSystem.y, deltaQ.u);
+  <font color="red">connect</font>(add3_1.y, EulerSystem.u);
+  <font color="red">connect</font>(add3_2.y, EulerSystem.u1);
+  <font color="red">connect</font>(add3_3.y, EulerSystem.u2);
+  <font color="red">connect</font>(bCRacoustics.y, EulerSystem.u6);
+  <font color="red">connect</font>(bCLacoustics.y, EulerSystem.u5);
+  <font color="red">connect</font>(iCacoustics.y, EulerSystem.u4);
+  <font color="red">connect</font>(EulerSystem.y[3, :], product.u2);
+  <font color="red">connect</font>(gamma.y, product.u1);
+  <font color="red">connect</font>(product.y, division.u1);
+  <font color="red">connect</font>(EulerSystem.y[1, :], division.u2);
+  <font color="red">connect</font>(division.y, c.u);
+  <font color="red">connect</font>(konst.y, product1.u1);
+  <font color="red">connect</font>(EulerSystem.y[3, :], product1.u2);
+  <font color="red">connect</font>(product1.y, division1.u1);
+  <font color="red">connect</font>(EulerSystem.y[1, :], division1.u2);
+  <font color="red">connect</font>(EulerSystem.y[2, :], product2.u1);
+  <font color="red">connect</font>(EulerSystem.y[2, :], product2.u2);
+  <font color="red">connect</font>(product2.y, product3.u1);
+  <font color="red">connect</font>(onehalf.y, product3.u2);
+  <font color="red">connect</font>(product3.y, h.u2);
+  <font color="red">connect</font>(division1.y, h.u1);
+  <font color="red">connect</font>(c.y, l.u1);
+  <font color="red">connect</font>(c.y, r.u1);
+  <font color="red">connect</font>(h.y, r.u2);
+  <font color="red">connect</font>(EulerSystem.y[2, :], r.u);
+  <font color="red">connect</font>(EulerSystem.y[2, :], l.u);
+  <font color="red">connect</font>(alpha.y, waveP1_1.u);
+  <font color="red">connect</font>(alpha.y, waveP1_2.u);
+  <font color="red">connect</font>(alpha.y, waveP1_3.u);
+  <font color="red">connect</font>(waveP1_1.y, fluctuation1_1.u1);
+  <font color="red">connect</font>(waveP1_2.y, fluctuation1_2.u1);
+  <font color="red">connect</font>(fluctuation1_1.y, add3_1.u1);
+  <font color="red">connect</font>(fluctuation1_2.y, add3_1.u2);
+  <font color="red">connect</font>(waveP1_3.y, fluctuation1_3.u1);
+  <font color="red">connect</font>(fluctuation1_3.y, add3_1.u3);
+  <font color="red">connect</font>(fluctuation1_1.y1, add3_2.u1);
+  <font color="red">connect</font>(fluctuation1_2.y1, add3_2.u2);
+  <font color="red">connect</font>(fluctuation1_3.y1, add3_2.u3);
+  <font color="red">connect</font>(l.y, fluctuation1_1.u);
+  <font color="red">connect</font>(l.y1, fluctuation1_2.u);
+  <font color="red">connect</font>(l.y2, fluctuation1_3.u);
+  <font color="red">connect</font>(teta1_1.y, fluxLimiterSolver1.u);
+  <font color="red">connect</font>(l.y1, teta1_1.u1);
+  <font color="red">connect</font>(l.y, teta1_2.u1);
+  <font color="red">connect</font>(l.y2, teta1_3.u1);
+  <font color="red">connect</font>(teta1_3.y, fluxLimiterSolver2.u);
+  <font color="red">connect</font>(teta1_2.y, fluxLimiterSolver.u);
+  <font color="red">connect</font>(fluxLimiterSolver.y, limitedWave1_1.u);
+  <font color="red">connect</font>(waveP1_1.y, limitedWave1_1.u1);
+  <font color="red">connect</font>(fluxLimiterSolver1.y, limitedWave1_2.u);
+  <font color="red">connect</font>(fluxLimiterSolver2.y, limitedWave1_3.u);
+  <font color="red">connect</font>(waveP1_2.y, limitedWave1_2.u1);
+  <font color="red">connect</font>(waveP1_3.y, limitedWave1_3.u1);
+  <font color="red">connect</font>(limitedWave1_1.y, fluxLimited1_1.u1);
+  <font color="red">connect</font>(limitedWave1_2.y, fluxLimited1_2.u1);
+  <font color="red">connect</font>(limitedWave1_3.y, fluxLimited1_3.u1);
+  <font color="red">connect</font>(l.y, fluxLimited1_1.u);
+  <font color="red">connect</font>(l.y1, fluxLimited1_2.u);
+  <font color="red">connect</font>(l.y2, fluxLimited1_3.u);
+  <font color="red">connect</font>(fluxLimited1_1.y, add3_3.u1);
+  <font color="red">connect</font>(fluxLimited1_2.y, add3_3.u2);
+  <font color="red">connect</font>(fluxLimited1_3.y, add3_3.u3);
+  <font color="red">connect</font>(r.y, filter1_1.u);
+  <font color="red">connect</font>(filter1_1.y, waveP1_1.u1);
+  <font color="red">connect</font>(filter1_1.y, waveP1_2.u1);
+  <font color="red">connect</font>(filter1_1.y, waveP1_3.u1);
+  <font color="red">connect</font>(deltaQ.y, riemann1_1.u);
+  <font color="red">connect</font>(r.y, riemann1_1.u1);
+  <font color="red">connect</font>(riemann1_1.y, alpha.u);
+  <font color="red">connect</font>(riemann1_1.y, teta1_2.u);
+  <font color="red">connect</font>(riemann1_1.y, teta1_1.u);
+  <font color="red">connect</font>(riemann1_1.y, teta1_3.u);
+<font color="blue">end </font>Euler;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE R<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.RI.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.R" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.R"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.R</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.RD.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.R">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> R
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.
+    gcl + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + worldModel1.
+    gcl + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.n + worldModel1.
+    gcl + worldModel1.gcr];
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+gcl+gcr-1<font color="blue"> loop</font>
+  y[1, 1, j] = 1.0;
+  y[2, 1, j] = u[j] - u1[j];
+  y[3, 1, j] = u2[j] - u[j]*u1[j];
+
+  y[1, 2, j] = 1.0;
+  y[2, 2, j] = u[j];
+  y[3, 2, j] = 0.5*((u[j])^2);
+
+  y[1, 3, j] = 1.0;
+  y[2, 3, j] = u[j] + u1[j];
+  y[3, 3, j] = u2[j] + u[j]*u1[j];
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.m,
+    worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1];
+<font color="blue">end </font>R;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE L<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LI.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.L" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.L"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.L</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LD.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.L">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>10</TD><TD>Number of grid points or cells</TD></TR>
+<TR><TD>Integer</TD><TD>qss</TD><TD>1</TD><TD>First-order space derivative (qss 1: second-order, 2: fourth-order, 3: sixth-order)</TD></TR>
+<TR><TD>Integer</TD><TD>u_xx</TD><TD>1</TD><TD>Second-order space derivative(u_xx Method 1: second-order, 2: fourth-order)</TD></TR>
+<TR bgcolor="#e0e0e0"><TD colspan=4>Finite Volume Method</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>2</TD><TD> Number of left ghost cells</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>2</TD><TD> Number of right ghost cells</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD> Space interval</TD></TR>
+<TR><TD>Real</TD><TD>deltat</TD><TD>0</TD><TD> Time interval</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>0</TD><TD> Flux Limiter: Number of unknowns in the system of equations</TD></TR>
+<TR><TD>Integer</TD><TD>fls</TD><TD>1</TD><TD> Flux Limiter Method 1: Upwind, 2: Lax Wendroff, 3: Beam Warming, 4: Fromm, 5: van Leer</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y2[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> L
+  <font color="blue">extends </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[j] = u[j] - u1[j];
+  y1[j] = u[j];
+  y2[j] = u[j] + u1[j];
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.gcl +
+    worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + worldModel1.gcl +
+    worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y2[worldModel1.n + 1];
+<font color="blue">end </font>L;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Riemann1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1I.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.Riemann1</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1D.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.m, worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Riemann1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+Real alpha[worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1];
+<font color="blue">equation </font>
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+gcl+gcr-1<font color="blue"> loop</font>
+ <font color="blue">for </font>k<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+      u[k, j] = u1[1, k, j]*alpha[1, j] + u1[2, k, j]*alpha[2, j] + u1[3, k, j]*alpha[3, j];
+ <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+y = alpha;
+
+<font color="darkgreen">// for j in 1:n+gcl+gcr-1 loop</font>
+<font color="darkgreen">//   u = u1[:, :, j]*alpha;</font>
+<font color="darkgreen">//   y = alpha;</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    worldModel1.gcl + worldModel1.gcr - 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.m,worldModel1.m,
+    worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + worldModel1.gcl + worldModel1.gcr - 1];
+<font color="blue">end </font>Riemann1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE WaveP1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1I.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.WaveP1</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Riemann1D.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.WaveP1">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.m, worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> WaveP1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Integer p = 1;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+    y[i, j] = u[p, j]*u1[i, p, j];
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.m,worldModel1.m,
+    worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>WaveP1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Fluctuation1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1I.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.Fluctuation1</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1D.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Fluctuation1">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y1[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Fluctuation1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.m,worldModel1.n
+     + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y1[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">equation </font>
+
+  <font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+   <font color="blue">if </font>u[j] &gt; 0<font color="blue"> then</font>
+    <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+      y[i, j] = u[j]*u1[i, j];
+      y1[i, j] = 0;
+    <font color="blue">end for</font>;
+   <font color="blue">elseif </font>u[j] &lt; 0<font color="blue"> then</font>
+    <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+      y1[i, j] = u[j]*u1[i, j];
+      y[i, j] = 0;
+    <font color="blue">end for</font>;
+  <font color="blue">else</font>
+    <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+      y[i, j] = 0;
+      y1[i, j] = 0;
+    <font color="blue">end for</font>;
+  <font color="blue">end if</font>;
+ <font color="blue">end for</font>;
+
+<font color="blue">end </font>Fluctuation1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE teta1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1I.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.teta1</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1D.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> teta1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Integer p = 1;
+
+<font color="blue">equation </font>
+  <font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+   <font color="blue">if </font>u1[j] &gt; 0<font color="blue"> then</font>
+    <font color="blue">if </font>u[p, j+1] == 0<font color="blue"> then</font>
+      y[p, j] = 0.0;
+    <font color="blue">else</font>
+      y[p, j] = u[p, j]/u[p, j+1];
+    <font color="blue">end if</font>;
+
+   <font color="blue">elseif </font>u1[j] &lt; 0<font color="blue"> then</font>
+    <font color="blue">if </font>u[p, j+1] == 0<font color="blue"> then</font>
+      y[p, j] = 0.0;
+    <font color="blue">else</font>
+      y[p, j] = u[p, j+2]/u[p, j+1];
+    <font color="blue">end if</font>;
+
+   <font color="blue">else</font>
+     y[p, j] = 0.0;
+   <font color="blue">end if</font>;
+  <font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    worldModel1.gcl + worldModel1.gcr - 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>teta1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LimitedWave1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1I.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.LimitedWave1</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1D.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.LimitedWave1">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> LimitedWave1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Integer p = 1;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+    y[i, j] = u[p, j]*u1[i, p];
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>LimitedWave1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FluxLimited1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.teta1I.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.FluxLimited1</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1D.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.FluxLimited1">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltat</TD><TD>worldModel1.deltat</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>deltax</TD><TD>1/n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> FluxLimited1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Real deltat = worldModel1.deltat;
+<font color="blue">parameter </font>Real deltax = 1/n;
+<font color="blue">parameter </font>Integer p = 1;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+    y[i, j] = 0.5*<font color="red">abs</font>(u[j])*(1-(deltat/deltax)*<font color="red">abs</font>(u[j]))*u1[i, j];
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.m,worldModel1.n
+     + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>FluxLimited1;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Filter1<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1I.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1"></A><A HREF="PDE_FiniteVolume_FluxLimiter_Examples_EulerSystem.html#PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem"
+>PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem</A>.Filter1</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1D.png" ALT="PDE.FiniteVolume.FluxLimiter.Examples.EulerSystem.Filter1">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.m, worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Filter1
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">parameter </font>Integer p = 1;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+    <font color="blue">for </font>k<font color="blue"> in </font>1:m<font color="blue"> loop</font>
+      y[i, k, j] = u[i, k, j+1];
+    <font color="blue">end for</font>;
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.m,
+    worldModel1.n + worldModel1.gcl + worldModel1.gcr - 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.m,
+    worldModel1.n + 1];
+<font color="blue">end </font>Filter1;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:04 2007.
+</address></BODY>
+</HTML>

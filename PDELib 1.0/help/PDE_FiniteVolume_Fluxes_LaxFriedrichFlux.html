@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LaxFriedrichFlux<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux"></A><A HREF="PDE_FiniteVolume_Fluxes.html#PDE.FiniteVolume.Fluxes"
+>PDE.FiniteVolume.Fluxes</A>.LaxFriedrichFlux</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains the LF block for the computation of fluxes at the cell boundaries.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LFS.png" ALT="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"
+>LF</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LF<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LFI.png" ALT="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"></A><A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux"
+>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux</A>.LF</H2>
+<IMG SRC="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LFD.png" ALT="PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF">
+<H3>Information</H3>
+<PRE></pre>
+
+<p>
+Implements the Lax-Friedrichs flux
+</p>
+
+<img align=middle src="..\Images\lf1.png">
+
+<p>
+By using this flux, the average update rule becomes:
+</p>
+
+<img align=middle src="..\Images\lf2.png">
+
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Real</TD><TD>alpha</TD><TD>0.0</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u2[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u3[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> LF
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="darkgreen">// parameter Integer gcl = worldModel1.gcl;</font>
+<font color="darkgreen">// parameter Integer gcr = worldModel1.gcr;</font>
+<font color="blue">parameter </font>Real alpha = 0.0;
+
+<font color="blue">equation </font>
+<font color="darkgreen">// for i in 1:gcl loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">for </font>i<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[i] = 0.5*(u[i] + u1[i]) - 0.5*alpha*(u2[i] - u3[i]);
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for i in gcl+n+1:gcl+n+gcr loop</font>
+<font color="darkgreen">//   y[i] = u[i];</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+<font color="blue">end </font>LF;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:35 2007.
+</address></BODY>
+</HTML>

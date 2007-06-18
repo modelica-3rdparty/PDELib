@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.UsersGuide.FiniteVolumeMethod.Introduction</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Introduction<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.UsersGuideI.png" ALT="PDE.UsersGuide.FiniteVolumeMethod.Introduction" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.UsersGuide.FiniteVolumeMethod.Introduction"></A><A HREF="PDE_UsersGuide_FiniteVolumeMethod.html#PDE.UsersGuide.FiniteVolumeMethod"
+>PDE.UsersGuide.FiniteVolumeMethod</A>.Introduction</H2>
+<PRE></pre>
+<h3><font color="#008000" size=5>Introduction</font></h3>
+<p>
+
+  In one dimension, the finite volume method consists in subdividing the spatial domain
+  into intervals, "finite volumes" (or cells), and approximate the integral of the function <b>q</b> over each <br>
+  of these volumes at each time step.  <br>
+  Denote the i-th finite volume by
+
+<p>
+<img align=middle src="..\Images\ref3.png">
+</p>
+
+  Then the approximation to the average of <b>q</b> in the cell C<sub>i</sub> at time
+  t, which we denote with Q<sub>i</sub><sup>t</sup>, is
+
+<p>
+<img align=middle src="..\Images\ref4.png">
+</p>
+
+  Remains the question of how to find this approximation. If we
+  think about conservation law, we note that the average within the
+  cell can only changes due to the fluxes at the boundaries <br>
+  (if we assume that no source or sink is present in the cell).
+  The integral form of conservation law is
+
+<p>
+<img align=middle src="..\Images\ref5.png">
+</p>
+
+  If we integrate this expression in time from t to t+Delta_t,
+  we obtain
+
+<p>
+<img align=middle src="..\Images\ref6.png">
+</p>
+
+  and dividing by Delta_x we reach the form
+
+<p>
+<img align=middle src="..\Images\ref7.png">
+</p>
+
+  which gives us an explicit time marching algorithm. This is more
+  clearly seen if we rewrite the expression using the notation we
+  introduced above:
+
+<p>
+<img align=middle src="..\Images\ref8.png">
+</p>
+
+  where F<sub>i-1/2</sub><sup>t</sup> approximates the average flux along the
+  interface x<sub>i-1/2</sub>:
+
+<p>
+<img align=middle src="..\Images\ref9.png">
+</p>
+
+  As can be seen from the equation (??), in order to find the average
+  at the next time step we need to find the fluxes at the
+  interfaces. The flux at the interface x<sub>i-1/2</sub> for example, <br>
+  depends on q(x<sub>i-1/2</sub>, t), which changes with time along the interface and for
+  which we do not know the analytical solution. For this reason we need to find
+  some approximation to <br>
+  these fluxes in order to calculate the averages at the next
+  time step. Let us now see some simple flux approximations.
+  Examples of fluxes: <br><br>
+
+  <b>Advection equation</b>
+  <br> <br>
+
+  Consider the advection equation q<sub>t</sub> + uq<sub>x</sub> = 0,
+  where <b>u</b> is the fluid velocity. We have seen in the
+  previous chapters, that the flux of <br>
+  the contaminant at some point x, at some time t, could be written as uq(x, t).
+  Consider now the flux through the interface x<sub>i-1/2</sub>. <br>
+
+  Inserting it into the average update rule, we obtain the finite volume method for
+  the advection equation:
+
+<p>
+<img align=middle src="..\Images\ref10.png">
+</p>
+
+<br><br>
+
+  <b>Diffusion equation</b>
+  <br><br>
+
+  In the advection equation, the flux depends on <b>q: f(q) =
+  uq</b>. The flux in the diffusion equation depends on
+  the derivative of <b>q</b>:
+
+<p>
+<img align=middle src="..\Images\ref11.png">
+</p>
+
+  where <b>beta</b> is the conductivity. If <b>beta</b> is space dependent
+  then the flux will depend on space too (<b>f(x, q<sub>x</sub>) = -beta(x)
+  q<sub>x</sub></b>). In the following we will assume for simplicity <br>
+  that <b>beta</b> is constant.
+  Now remains the question of how to approximate numerically the
+  diffusion flux. One possibility were:
+
+<p>
+<img align=middle src="..\Images\ref12.png">
+</p>
+
+  By inserting this flux approximation into the average update rule
+  (??), we obtain:
+
+<p>
+<img align=middle src="..\Images\ref13.png">
+</p>
+
+  It is interesting to note, that after some algebraic
+  manipulations, we can write the average update rule
+  in the form
+
+<p>
+<img align=middle src="..\Images\ref14.png">
+</p>
+
+  which is equivalent to the finite difference discretization
+  of the conservation law equation <b>q<sub>t</sub> + f(q)<sub>x</sub> = 0</b>.
+  As said in (LeVeque): Many methods can be equally well viewed as <br>
+  finite difference approximations to this equation or as
+  finite volume methods.
+  Another form of the average update rule is
+
+<p>
+<img align=middle src="..\Images\ref15.png">
+</p>
+
+  which give us an ODE for each average cell. This form is more
+  suitable for the implementation in Dymola and all Finite Volume
+  Method blocks are based on this form of update rule.
+
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:10 2007.
+</address></BODY>
+</HTML>

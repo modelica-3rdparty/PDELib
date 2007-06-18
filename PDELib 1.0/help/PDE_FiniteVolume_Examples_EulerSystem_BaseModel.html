@@ -1,0 +1,208 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Examples.EulerSystem.BaseModel</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BaseModel<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.EulerSystem.BaseModel"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem.html#PDE.FiniteVolume.Examples.EulerSystem"
+>PDE.FiniteVolume.Examples.EulerSystem</A>.BaseModel</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains the base model for the Euler equations.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_FiniteVolume_Examples_EulerSystem_BaseModel.html#PDE.FiniteVolume.Examples.EulerSystem.BaseModel.ShockWaveLDLR"
+>ShockWaveLDLR</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE ShockWaveLDLR<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.EulerSystem.BaseModel.ShockWaveLDLR"></A><A HREF="PDE_FiniteVolume_Examples_EulerSystem_BaseModel.html#PDE.FiniteVolume.Examples.EulerSystem.BaseModel"
+>PDE.FiniteVolume.Examples.EulerSystem.BaseModel</A>.ShockWaveLDLR</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.EulerSystem.BaseModel.ShockWaveLDLRD.png" ALT="PDE.FiniteVolume.Examples.EulerSystem.BaseModel.ShockWaveLDLR">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Base model for the Euler equations.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> ShockWaveLDLR
+  <A HREF="PDE_FiniteVolume_FVMIntegrator.html#PDE.FiniteVolume.FVMIntegrator.FVIntegrator"
+>PDE.FiniteVolume.FVMIntegrator.FVIntegrator</A> Density;
+  <A HREF="PDE_FiniteVolume_FVMIntegrator.html#PDE.FiniteVolume.FVMIntegrator.FVIntegrator"
+>PDE.FiniteVolume.FVMIntegrator.FVIntegrator</A> Momentum;
+  <A HREF="PDE_FiniteVolume_FVMIntegrator.html#PDE.FiniteVolume.FVMIntegrator.FVIntegrator"
+>PDE.FiniteVolume.FVMIntegrator.FVIntegrator</A> Energy;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRminus"
+>PDE.FiniteVolume.LDLR.L.LDLRminus</A> lDLRminus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRplus"
+>PDE.FiniteVolume.LDLR.L.LDLRplus</A> lDLRplus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>PDE.FiniteVolume.LDLR.u.u_minus</A> u_minus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>PDE.FiniteVolume.LDLR.u.u_plus</A> u_plus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRminus"
+>PDE.FiniteVolume.LDLR.L.LDLRminus</A> lDLRminus_plus1;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRplus"
+>PDE.FiniteVolume.LDLR.L.LDLRplus</A> lDLRplus_plus1;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>PDE.FiniteVolume.LDLR.u.u_minus</A> u_minus_plus1;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>PDE.FiniteVolume.LDLR.u.u_plus</A> u_plus_plus1;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRminus"
+>PDE.FiniteVolume.LDLR.L.LDLRminus</A> lDLRminus_plus2;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRplus"
+>PDE.FiniteVolume.LDLR.L.LDLRplus</A> lDLRplus_plus2;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>PDE.FiniteVolume.LDLR.u.u_minus</A> u_minus_plus2;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>PDE.FiniteVolume.LDLR.u.u_plus</A> u_plus_plus2;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"
+>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF</A> lF;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product4[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product5[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> const[worldModel1.n + 1](y=0.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> const1[worldModel1.n + 1](y=
+        0.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n + 1](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add1[worldModel1.n + 1](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product6[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product7[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> gammaMinusOne[worldModel1.n +
+    1](y=0.4);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add3[worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"
+>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF</A> lF1;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add4[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add5[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product8[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product9[worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"
+>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF</A> lF2;
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(n=10);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(Density.y, lDLRminus_plus.u);
+  <font color="red">connect</font>(Density.y, lDLRplus_plus.u);
+  <font color="red">connect</font>(lDLRminus_plus.y, u_minus_plus.u1);
+  <font color="red">connect</font>(lDLRplus_plus.y, u_plus_plus.u1);
+  <font color="red">connect</font>(Density.y, u_minus_plus.u);
+  <font color="red">connect</font>(Density.y, u_plus_plus.u);
+  <font color="red">connect</font>(Momentum.y, lDLRminus_plus1.u);
+  <font color="red">connect</font>(Momentum.y, lDLRplus_plus1.u);
+  <font color="red">connect</font>(Momentum.y, u_minus_plus1.u);
+  <font color="red">connect</font>(lDLRminus_plus1.y, u_minus_plus1.u1);
+  <font color="red">connect</font>(Momentum.y, u_plus_plus1.u);
+  <font color="red">connect</font>(lDLRplus_plus1.y, u_plus_plus1.u1);
+  <font color="red">connect</font>(Energy.y, lDLRminus_plus2.u);
+  <font color="red">connect</font>(Energy.y, lDLRplus_plus2.u);
+  <font color="red">connect</font>(Energy.y, u_minus_plus2.u);
+  <font color="red">connect</font>(Energy.y, u_plus_plus2.u);
+  <font color="red">connect</font>(lDLRminus_plus2.y, u_minus_plus2.u1);
+  <font color="red">connect</font>(lDLRplus_plus2.y, u_plus_plus2.u1);
+  <font color="red">connect</font>(u_minus_plus.y, product.u1);
+  <font color="red">connect</font>(u_plus_plus.y, product1.u1);
+  <font color="red">connect</font>(product.y, lF.u);
+  <font color="red">connect</font>(product1.y, lF.u1);
+  <font color="red">connect</font>(u_plus_plus.y, lF.u2);
+  <font color="red">connect</font>(u_minus_plus.y, lF.u3);
+  <font color="red">connect</font>(lF.y, Density.u);
+  <font color="red">connect</font>(u_minus_plus1.y, division.u1);
+  <font color="red">connect</font>(u_plus_plus1.y, division1.u1);
+  <font color="red">connect</font>(u_minus_plus.y, division.u2);
+  <font color="red">connect</font>(u_plus_plus.y, division1.u2);
+  <font color="red">connect</font>(division.y, product.u2);
+  <font color="red">connect</font>(division1.y, product1.u2);
+  <font color="red">connect</font>(u_minus_plus1.y, product2.u2);
+  <font color="red">connect</font>(division.y, product2.u1);
+  <font color="red">connect</font>(u_plus_plus1.y, product3.u2);
+  <font color="red">connect</font>(division1.y, product3.u1);
+  <font color="red">connect</font>(product2.y, product4.u1);
+  <font color="red">connect</font>(const.y, product4.u2);
+  <font color="red">connect</font>(const1.y, product5.u2);
+  <font color="red">connect</font>(product3.y, product5.u1);
+  <font color="red">connect</font>(product4.y, add.u2);
+  <font color="red">connect</font>(u_minus_plus2.y, add.u1);
+  <font color="red">connect</font>(product5.y, add1.u2);
+  <font color="red">connect</font>(u_plus_plus2.y, add1.u1);
+  <font color="red">connect</font>(gammaMinusOne.y, product6.u2);
+  <font color="red">connect</font>(gammaMinusOne.y, product7.u1);
+  <font color="red">connect</font>(add.y, product6.u1);
+  <font color="red">connect</font>(add1.y, product7.u2);
+  <font color="red">connect</font>(product2.y, add2.u1);
+  <font color="red">connect</font>(product3.y, add3.u1);
+  <font color="red">connect</font>(product6.y, add2.u2);
+  <font color="red">connect</font>(product7.y, add3.u2);
+  <font color="red">connect</font>(add2.y, lF1.u);
+  <font color="red">connect</font>(add3.y, lF1.u1);
+  <font color="red">connect</font>(u_plus_plus1.y, lF1.u2);
+  <font color="red">connect</font>(u_minus_plus1.y, lF1.u3);
+  <font color="red">connect</font>(lF1.y, Momentum.u);
+  <font color="red">connect</font>(u_minus_plus2.y, add4.u1);
+  <font color="red">connect</font>(u_plus_plus2.y, add5.u1);
+  <font color="red">connect</font>(product6.y, add4.u2);
+  <font color="red">connect</font>(product7.y, add5.u2);
+  <font color="red">connect</font>(add4.y, product8.u2);
+  <font color="red">connect</font>(add5.y, product9.u2);
+  <font color="red">connect</font>(division.y, product8.u1);
+  <font color="red">connect</font>(division1.y, product9.u1);
+  <font color="red">connect</font>(product8.y, lF2.u);
+  <font color="red">connect</font>(product9.y, lF2.u1);
+  <font color="red">connect</font>(u_plus_plus2.y, lF2.u2);
+  <font color="red">connect</font>(u_minus_plus2.y, lF2.u3);
+  <font color="red">connect</font>(lF2.y, Energy.u);
+<font color="blue">end </font>ShockWaveLDLR;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:54 2007.
+</address></BODY>
+</HTML>

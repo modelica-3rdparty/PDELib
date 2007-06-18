@@ -1,0 +1,352 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.FluxLimiter.LinearMethods</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LinearMethods<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.FluxLimiter.LinearMethods"></A><A HREF="PDE_FiniteVolume_FluxLimiter.html#PDE.FiniteVolume.FluxLimiter"
+>PDE.FiniteVolume.FluxLimiter</A>.LinearMethods</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package offers some linear methods for solving linear constant-coefficient hyperbolic system of equations.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindS.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.Upwind" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.Upwind"
+>Upwind</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindS.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.LaxWendroff" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.LaxWendroff"
+>LaxWendroff</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindS.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.BeamWarming" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.BeamWarming"
+>BeamWarming</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindS.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.Fromm" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods.Fromm"
+>Fromm</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Upwind<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindI.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.Upwind" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.LinearMethods.Upwind"></A><A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods"
+>PDE.FiniteVolume.FluxLimiter.LinearMethods</A>.Upwind</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindD.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.Upwind">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The upwind method takes as input the <b>teta</b> matrix and gives as output matrix
+</p>
+
+<img align=middle src="..\Images\fl1.png">
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Upwind
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+<font color="blue">equation </font>
+  y = 0.0*u;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>Upwind;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE LaxWendroff<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.LaxWendroffI.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.LaxWendroff" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.LinearMethods.LaxWendroff"></A><A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods"
+>PDE.FiniteVolume.FluxLimiter.LinearMethods</A>.LaxWendroff</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindD.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.LaxWendroff">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The Lax Wendroff Method takes as input the <b>teta</b> matrix and gives as output the matrix
+</p>
+
+<img align=middle src="..\Images\fl2.png">
+
+<p>
+which has ones in the j-th row and zeros elsewhere.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>&nbsp;</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> LaxWendroff
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">outer </font><font color="blue">parameter </font>Integer p;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:p-1<font color="blue"> loop</font>
+    y[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[p, j] = 1.0;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>p+1:m<font color="blue"> loop</font>
+    y[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="darkgreen">// for j in 1:n+1 loop</font>
+<font color="darkgreen">//   for i in 1:m loop</font>
+<font color="darkgreen">//     y[i, j] = 1.0;</font>
+<font color="darkgreen">//   end for;</font>
+<font color="darkgreen">// end for;</font>
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>LaxWendroff;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BeamWarming<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.BeamWarmingI.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.BeamWarming" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.LinearMethods.BeamWarming"></A><A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods"
+>PDE.FiniteVolume.FluxLimiter.LinearMethods</A>.BeamWarming</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindD.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.BeamWarming">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The Beam Warming Method takes as input the <b>teta</b> matrix and gives as output matrix
+</p>
+
+<img align=middle src="..\Images\fl3.png">
+
+<p>
+which has in the j-th row the entries of the p-th row of the theta matrix and zeros in all other entries.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>&nbsp;</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> BeamWarming
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">outer </font><font color="blue">parameter </font>Integer p;
+
+<font color="blue">equation </font>
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:p-1<font color="blue"> loop</font>
+    y[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[p, j] = u[p, j];
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>p+1:m<font color="blue"> loop</font>
+    y[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">public </font>
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">end </font>BeamWarming;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Fromm<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.FrommI.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.Fromm" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.FluxLimiter.LinearMethods.Fromm"></A><A HREF="PDE_FiniteVolume_FluxLimiter_LinearMethods.html#PDE.FiniteVolume.FluxLimiter.LinearMethods"
+>PDE.FiniteVolume.FluxLimiter.LinearMethods</A>.Fromm</H2>
+<IMG SRC="PDE.FiniteVolume.FluxLimiter.LinearMethods.UpwindD.png" ALT="PDE.FiniteVolume.FluxLimiter.LinearMethods.Fromm">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+The Fromm Method takes as input the <b>teta</b> matrix and gives as output matrix <b>f(teta)</b> which has in the j-th row
+</p>
+
+<img align=middle src="..\Images\fl4.png">
+
+<p>
+and zeros in all other rows.
+</p>
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>m</TD><TD>worldModel1.m</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>p</TD><TD>&nbsp;</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.m, worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Fromm
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+<font color="blue">parameter </font>Integer n = worldModel1.n;
+<font color="blue">parameter </font>Integer m = worldModel1.m;
+<font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+<font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+<font color="blue">outer </font><font color="blue">parameter </font>Integer p;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.m,worldModel1.n +
+    1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.m,worldModel1.n
+     + 1];
+<font color="blue">equation </font>
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>1:p-1<font color="blue"> loop</font>
+    y[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  y[p, j] = 0.5*(1+u[p, j]);
+<font color="blue">end for</font>;
+
+<font color="blue">for </font>j<font color="blue"> in </font>1:n+1<font color="blue"> loop</font>
+  <font color="blue">for </font>i<font color="blue"> in </font>p+1:m<font color="blue"> loop</font>
+    y[i, j] = 0.0;
+  <font color="blue">end for</font>;
+<font color="blue">end for</font>;
+
+<font color="blue">end </font>Fromm;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:01 2007.
+</address></BODY>
+</HTML>

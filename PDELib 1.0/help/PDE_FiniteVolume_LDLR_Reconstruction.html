@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.LDLR.Reconstruction</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Reconstruction<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.LDLR.Reconstruction"></A><A HREF="PDE_FiniteVolume_LDLR.html#PDE.FiniteVolume.LDLR"
+>PDE.FiniteVolume.LDLR</A>.Reconstruction</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains block Rec that computes the the values u<sup>-</sup> and u<sup>+</sup> at the interface x<sub>i+1/2</sub> by using the
+LDLR-, LDLR+, u- and u+ blocks.
+</p>
+
+<p>
+<img align=middle src="..\Images\log18.png">
+</p>
+<p>
+<img align=middle src="..\Images\log19.png">
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><IMG SRC="PDE.FiniteVolume.LDLR.Reconstruction.RecS.png" ALT="PDE.FiniteVolume.LDLR.Reconstruction.Rec" WIDTH=20  HEIGHT=20 ALIGN = TOP >&nbsp;<A HREF="PDE_FiniteVolume_LDLR_Reconstruction.html#PDE.FiniteVolume.LDLR.Reconstruction.Rec"
+>Rec</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Rec<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="PDE.FiniteVolume.LDLR.Reconstruction.RecI.png" ALT="PDE.FiniteVolume.LDLR.Reconstruction.Rec" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="PDE.FiniteVolume.LDLR.Reconstruction.Rec"></A><A HREF="PDE_FiniteVolume_LDLR_Reconstruction.html#PDE.FiniteVolume.LDLR.Reconstruction"
+>PDE.FiniteVolume.LDLR.Reconstruction</A>.Rec</H2>
+<IMG SRC="PDE.FiniteVolume.LDLR.Reconstruction.RecD.png" ALT="PDE.FiniteVolume.LDLR.Reconstruction.Rec">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements the reconstruction of the values u<sup>-</sup> and u<sup>+</sup> at the interface x<sub>i+1/2</sub> by using the
+LDLR-, LDLR+, u- and u+ blocks.
+</p>
+
+<p>
+<img align=middle src="..\Images\log18.png">
+</p>
+<p>
+<img align=middle src="..\Images\log19.png">
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+<ul>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>Integer</TD><TD>method</TD><TD>worldModel1.qss</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>n</TD><TD>worldModel1.n</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcl</TD><TD>worldModel1.gcl</TD><TD>&nbsp;</TD></TR>
+<TR><TD>Integer</TD><TD>gcr</TD><TD>worldModel1.gcr</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Connectors</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Type</TH><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD>input <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</A></TD><TD>u[worldModel1.n + worldModel1.gcl + worldModel1.gcr]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+<TR><TD>output <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</A></TD><TD>y1[worldModel1.n + 1]</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">block</font> Rec
+  <font color="blue">import </font><A HREF="PDE.html#PDE"
+>PDE</A>;
+  <font color="blue">extends </font><A HREF="PDE_Icons.html#PDE.Icons.BlockIcon"
+>Icons.BlockIcon</A>;
+
+<font color="blue">outer </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>PDE.World.worldModel</A> worldModel1;
+  <font color="blue">parameter </font>Integer method = worldModel1.qss;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer n = worldModel1.n;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer gcl = worldModel1.gcl;
+  <font color="blue">inner </font><font color="blue">parameter </font>Integer gcr = worldModel1.gcr;
+
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</A> u[worldModel1.n + worldModel1.
+    gcl + worldModel1.gcr];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</A> y1[worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRminus"
+>PDE.FiniteVolume.LDLR.L.LDLRminus</A> lDLRminus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRplus"
+>PDE.FiniteVolume.LDLR.L.LDLRplus</A> lDLRplus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>PDE.FiniteVolume.LDLR.u.u_minus</A> u_minus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>PDE.FiniteVolume.LDLR.u.u_plus</A> u_plus_plus;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(lDLRminus_plus.y, u_minus_plus.u1);
+  <font color="red">connect</font>(lDLRplus_plus.y, u_plus_plus.u1);
+  <font color="red">connect</font>(u, lDLRminus_plus.u);
+  <font color="red">connect</font>(u, lDLRplus_plus.u);
+  <font color="red">connect</font>(u, u_minus_plus.u);
+  <font color="red">connect</font>(u, u_plus_plus.u);
+  <font color="red">connect</font>(u_minus_plus.y, y);
+  <font color="red">connect</font>(u_plus_plus.y, y1);
+<font color="blue">end </font>Rec;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:49 2007.
+</address></BODY>
+</HTML>

@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.General.Examples</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Examples<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.General.Examples"></A><A HREF="PDE_General.html#PDE.General"
+>PDE.General</A>.Examples</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains examples of partial differential equations solved with the general block.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_General_Examples.html#PDE.General.Examples.AdvectionMOL"
+>AdvectionMOL</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><A HREF="PDE_General_Examples.html#PDE.General.Examples.AdvectionFVM"
+>AdvectionFVM</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE AdvectionMOL<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.General.Examples.AdvectionMOL"></A><A HREF="PDE_General_Examples.html#PDE.General.Examples"
+>PDE.General.Examples</A>.AdvectionMOL</H2>
+<IMG SRC="PDE.General.Examples.AdvectionMOLD.png" ALT="PDE.General.Examples.AdvectionMOL">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements advection equation with MOL method by using GeneralIntegrator block and setting the integrator parameter to 1.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> AdvectionMOL
+  <A HREF="PDE_General_Integrator.html#PDE.General.Integrator.GeneralIntegrator"
+>PDE.General.Integrator.GeneralIntegrator</A> generalIntegrator(
+    vb=2,
+    icb=2,
+    n=worldModel1.n,
+    ve=worldModel1.n,
+    ice=worldModel1.n,
+    bcl=1,
+    integrator=1);
+  <A HREF="PDE_MOL_SpaceDerivative_Derivatives.html#PDE.MOL.SpaceDerivative.Derivatives.u_x"
+>MOL.SpaceDerivative.Derivatives.u_x</A> u_x;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> speed[worldModel1.n](y=-0.1);
+  <A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DiffusionIC"
+>MOL.Examples.Diffusion.DiffusionIC</A> diffusionIC;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL(y=<font color="red">cos</font>(-0.1*time));
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(u_x.y, product.u1);
+  <font color="red">connect</font>(speed.y, product.u2);
+  <font color="red">connect</font>(product.y, generalIntegrator.u);
+  <font color="red">connect</font>(generalIntegrator.y, u_x.u);
+  <font color="red">connect</font>(diffusionIC.y, generalIntegrator.u2);
+  <font color="red">connect</font>(BCL.y, generalIntegrator.u3);
+<font color="blue">end </font>AdvectionMOL;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE AdvectionFVM<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.General.Examples.AdvectionFVM"></A><A HREF="PDE_General_Examples.html#PDE.General.Examples"
+>PDE.General.Examples</A>.AdvectionFVM</H2>
+<IMG SRC="PDE.General.Examples.AdvectionFVMD.png" ALT="PDE.General.Examples.AdvectionFVM">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Implements advection equation with FVM method by using GeneralIntegrator block and setting the integrator parameter to 2.
+</p>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> AdvectionFVM
+  <A HREF="PDE_General_Integrator.html#PDE.General.Integrator.GeneralIntegrator"
+>PDE.General.Integrator.GeneralIntegrator</A> generalIntegrator(
+    vb=2,
+    icb=2,
+    n=worldModel1.n,
+    ve=worldModel1.n,
+    ice=worldModel1.n,
+    bcl=0,
+    integrator=2);
+  <A HREF="PDE_MOL_Examples_Diffusion.html#PDE.MOL.Examples.Diffusion.DiffusionIC"
+>MOL.Examples.Diffusion.DiffusionIC</A> diffusionIC;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL(y=<font color="red">cos</font>(-0.1*time));
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRminus"
+>PDE.FiniteVolume.LDLR.L.LDLRminus</A> lDLRminus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRplus"
+>PDE.FiniteVolume.LDLR.L.LDLRplus</A> lDLRplus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>PDE.FiniteVolume.LDLR.u.u_minus</A> u_minus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>PDE.FiniteVolume.LDLR.u.u_plus</A> u_plus_plus;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> speed1[worldModel1.n + 1](y=0.1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"
+>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF</A> lF(
+                                  alpha=0.2);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCR;
+<font color="blue">equation </font>
+  <font color="red">connect</font>(diffusionIC.y, generalIntegrator.u2);
+  <font color="red">connect</font>(BCL.y, generalIntegrator.u3);
+  <font color="red">connect</font>(generalIntegrator.y1, lDLRminus_plus.u);
+  <font color="red">connect</font>(generalIntegrator.y1, lDLRplus_plus.u);
+  <font color="red">connect</font>(lDLRminus_plus.y, u_minus_plus.u1);
+  <font color="red">connect</font>(lDLRplus_plus.y, u_plus_plus.u1);
+  <font color="red">connect</font>(generalIntegrator.y1, u_minus_plus.u);
+  <font color="red">connect</font>(generalIntegrator.y1, u_plus_plus.u);
+  <font color="red">connect</font>(u_plus_plus.y, product2.u2);
+  <font color="red">connect</font>(u_minus_plus.y, product1.u1);
+  <font color="red">connect</font>(speed1.y, product1.u2);
+  <font color="red">connect</font>(speed1.y, product2.u1);
+  <font color="red">connect</font>(product1.y, lF.u);
+  <font color="red">connect</font>(product2.y, lF.u1);
+  <font color="red">connect</font>(u_plus_plus.y, lF.u2);
+  <font color="red">connect</font>(u_minus_plus.y, lF.u3);
+  <font color="red">connect</font>(BCR.y, generalIntegrator.u4);
+  <font color="red">connect</font>(lF.y, generalIntegrator.u1);
+<font color="blue">end </font>AdvectionFVM;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:59:09 2007.
+</address></BODY>
+</HTML>

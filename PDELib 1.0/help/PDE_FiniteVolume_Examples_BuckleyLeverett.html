@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<TITLE>PDE.FiniteVolume.Examples.BuckleyLeverett</TITLE>
+<META name="HTML-Generator" content="Dymola">
+</HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BuckleyLeverett<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.BuckleyLeverett"></A><A HREF="PDE_FiniteVolume_Examples.html#PDE.FiniteVolume.Examples"
+>PDE.FiniteVolume.Examples</A>.BuckleyLeverett</H2>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains Buckley-Leverett equation solved with the Finite Volume Methods.
+</p>
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE><P>
+<H3>Package Content</H3><p>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
+<TR><TH >Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="PDE_FiniteVolume_Examples_BuckleyLeverett.html#PDE.FiniteVolume.Examples.BuckleyLeverett.BuckleyLeverettEquation"
+>BuckleyLeverettEquation</A>
+</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BuckleyLeverettEquation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="PDE.FiniteVolume.Examples.BuckleyLeverett.BuckleyLeverettEquation"></A><A HREF="PDE_FiniteVolume_Examples_BuckleyLeverett.html#PDE.FiniteVolume.Examples.BuckleyLeverett"
+>PDE.FiniteVolume.Examples.BuckleyLeverett</A>.BuckleyLeverettEquation</H2>
+<IMG SRC="PDE.FiniteVolume.Examples.BuckleyLeverett.BuckleyLeverettEquationD.png" ALT="PDE.FiniteVolume.Examples.BuckleyLeverett.BuckleyLeverettEquation">
+<H3>Information</H3>
+<PRE></pre>
+<h3><font color="#008000" size=5>Buckley-Leverett equation</font></h3>
+<p>
+Implements the Buckley-Leverett equation
+</p>
+
+<img align=middle src="..\Images\bl1.png">
+
+<p>
+The initial condition is
+</p>
+
+<img align=middle src="..\Images\bl2.png">
+
+<p>
+and boundary conditions are
+</p>
+
+<p>
+<img align=middle src="..\Images\bl3.png">
+</p>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+
+
+</pre>
+<p><b>Release Notes: </b></p>
+
+<ul>
+<pre></PRE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> BuckleyLeverettEquation
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRminus"
+>PDE.FiniteVolume.LDLR.L.LDLRminus</A> lDLRminus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_L.html#PDE.FiniteVolume.LDLR.L.LDLRplus"
+>PDE.FiniteVolume.LDLR.L.LDLRplus</A> lDLRplus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_minus"
+>PDE.FiniteVolume.LDLR.u.u_minus</A> u_minus_plus;
+  <A HREF="PDE_FiniteVolume_LDLR_u.html#PDE.FiniteVolume.LDLR.u.u_plus"
+>PDE.FiniteVolume.LDLR.u.u_plus</A> u_plus_plus;
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product1[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> four[worldModel1.n + 1](y=4);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> one[worldModel1.n + 1](y=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add[worldModel1.n + 1](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add1[worldModel1.n + 1](k2=-1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product4[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</A> product5[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add2[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</A> add3[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division[worldModel1.n + 1];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</A> division1[worldModel1.n + 1];
+  <A HREF="PDE_FiniteVolume_Fluxes_LaxFriedrichFlux.html#PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF"
+>PDE.FiniteVolume.Fluxes.LaxFriedrichFlux.LF</A> lF(
+                                      alpha=0.5);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> IC[worldModel1.n](y=1);
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCL[worldModel1.gcl];
+  <A HREF="file:///C:/Program Files/Dymola/Modelica/Library/Modelica 2.2.1/help/Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</A> BCR[worldModel1.gcr];
+  <font color="blue">inner </font><A HREF="PDE_World.html#PDE.World.worldModel"
+>World.worldModel</A> worldModel1(n=40);
+  <A HREF="PDE_FiniteVolume_FVMIntegrator.html#PDE.FiniteVolume.FVMIntegrator.FVIntegrator"
+>PDE.FiniteVolume.FVMIntegrator.FVIntegrator</A> BuckleyLeverett(
+    ve=worldModel1.gcl + worldModel1.n,
+    ice=worldModel1.gcl + worldModel1.n,
+    vb=worldModel1.gcl + 1,
+    icb=worldModel1.gcl + 1,
+    bcl=0,
+    bcr=0);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(lDLRplus_plus.y, u_plus_plus.u1);
+  <font color="red">connect</font>(lDLRminus_plus.y, u_minus_plus.u1);
+  <font color="red">connect</font>(u_minus_plus.y, product.u1);
+  <font color="red">connect</font>(u_minus_plus.y, product.u2);
+  <font color="red">connect</font>(product.y, product1.u1);
+  <font color="red">connect</font>(four.y, product1.u2);
+  <font color="red">connect</font>(four.y, product3.u1);
+  <font color="red">connect</font>(u_plus_plus.y, product2.u1);
+  <font color="red">connect</font>(u_plus_plus.y, product2.u2);
+  <font color="red">connect</font>(product2.y, product3.u2);
+  <font color="red">connect</font>(one.y, add.u1);
+  <font color="red">connect</font>(one.y, add1.u1);
+  <font color="red">connect</font>(u_minus_plus.y, add.u2);
+  <font color="red">connect</font>(u_plus_plus.y, add1.u2);
+  <font color="red">connect</font>(add.y, product4.u1);
+  <font color="red">connect</font>(add.y, product4.u2);
+  <font color="red">connect</font>(add1.y, product5.u1);
+  <font color="red">connect</font>(add1.y, product5.u2);
+  <font color="red">connect</font>(product4.y, add2.u2);
+  <font color="red">connect</font>(product5.y, add3.u1);
+  <font color="red">connect</font>(product1.y, add2.u1);
+  <font color="red">connect</font>(product3.y, add3.u2);
+  <font color="red">connect</font>(add2.y, division.u2);
+  <font color="red">connect</font>(add3.y, division1.u2);
+  <font color="red">connect</font>(product1.y, division.u1);
+  <font color="red">connect</font>(product3.y, division1.u1);
+  <font color="red">connect</font>(division.y, lF.u);
+  <font color="red">connect</font>(division1.y, lF.u1);
+  <font color="red">connect</font>(u_plus_plus.y, lF.u2);
+  <font color="red">connect</font>(u_minus_plus.y, lF.u3);
+  <font color="red">connect</font>(BuckleyLeverett.y, lDLRminus_plus.u);
+  <font color="red">connect</font>(BuckleyLeverett.y, lDLRplus_plus.u);
+  <font color="red">connect</font>(BuckleyLeverett.y, u_minus_plus.u);
+  <font color="red">connect</font>(BuckleyLeverett.y, u_plus_plus.u);
+  <font color="red">connect</font>(lF.y, BuckleyLeverett.u);
+  <font color="red">connect</font>(IC.y, BuckleyLeverett.u2);
+  <font color="red">connect</font>(BCL.y, BuckleyLeverett.u3);
+  <font color="red">connect</font>(BCR.y, BuckleyLeverett.u4);
+<font color="blue">end </font>BuckleyLeverettEquation;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Sun Jun 17 19:58:52 2007.
+</address></BODY>
+</HTML>
