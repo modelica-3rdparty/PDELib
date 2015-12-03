@@ -14,7 +14,7 @@ Download [PDELib v1.0 (2007-06-18)](../../archive/1.0.zip)
 
 ## License
 
-**The license state of this library is unclear since the authors did not specify any license. Please contact the authors in order to motivate them to clarify the license state of this library.**
+The libray is released under [Mozilla Public License 2.0](LICENSE.txt).
 
 ## Development and contribution
 The PDE library was realized by Farid Dshabarow in 2007 as part of his MS Thesis research under supervision of [Prof. Fran&ccedil;ois Cellier](http://www.inf.ethz.ch/personal/fcellier/)
