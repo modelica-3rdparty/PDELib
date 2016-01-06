@@ -1,6 +1,6 @@
 # PDELib
 
-A free library for modeling systems described by 1D partial differential equations. (unlicensed)
+A free library for modeling systems described by 1D partial differential equations.
 
 ## Library description
 
